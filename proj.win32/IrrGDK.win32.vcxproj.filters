@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="resource">
+      <UniqueIdentifier>{cf5e7e3b-6cbb-425c-babf-c35576fab268}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{1ab6c03c-8e8c-47ca-b792-e2c60de1b343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel">
+      <UniqueIdentifier>{112efb15-2bd3-4acf-92bf-f6ecf2028fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\base">
+      <UniqueIdentifier>{d7defb76-b555-4923-81b9-6baadc434e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\core">
+      <UniqueIdentifier>{b038c83a-ca29-427c-8417-c22d55dd0f15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\fsm">
+      <UniqueIdentifier>{d34a3576-cc6d-4bf8-96a7-fcd6782cc5de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\net">
+      <UniqueIdentifier>{3d686a1b-2710-4a86-84a6-484c334ba02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\utils">
+      <UniqueIdentifier>{d36d424e-cf09-4a30-bbe6-f2358c936168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\ui">
+      <UniqueIdentifier>{689595f6-5dde-449a-94df-fc497f92bb14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\manager">
+      <UniqueIdentifier>{46329399-2ecf-4220-be89-98b8c983cd28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\parser">
+      <UniqueIdentifier>{4a97b2e6-3575-43c2-ba37-36f8b3753279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\extends">
+      <UniqueIdentifier>{201cef28-b8ae-43fb-a1a5-6d5b4ceb2f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\extends\pugixml">
+      <UniqueIdentifier>{c10d441d-7103-4f88-8e7c-c435ff73ce96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\event">
+      <UniqueIdentifier>{6079168d-9086-4bd4-a1ea-e74b67873cdd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\IrrGDK.ico">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\MainActivity.xml">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IrrGDK.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\base\IrrCommon.h">
+      <Filter>Classes\kernel\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\base\IrrMarcos.h">
+      <Filter>Classes\kernel\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\base\IrrSingleton.h">
+      <Filter>Classes\kernel\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\base\IrrTypeDef.h">
+      <Filter>Classes\kernel\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrBundle.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrColor.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrGeom.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrObject.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrCallBack.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrFileUtils.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrMathUtils.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrStringUtils.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\CMsgSubject.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\CNetMarcos.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\CSocket.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\CSocketAdapter.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrJsonUtils.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\IrrCodeTransUtils.h">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrPattern.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\manager\IrrMessageNotifyManager.h">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\manager\IrrActivityManager.h">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\manager\IrrMemoCacheManager.h">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\parser\IrrActivityParser.h">
+      <Filter>Classes\kernel\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\pugixml\pugiconfig.hpp">
+      <Filter>Classes\kernel\extends\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\pugixml\pugixml.hpp">
+      <Filter>Classes\kernel\extends\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\event\IrrUIEvent.h">
+      <Filter>Classes\kernel\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrWidget.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrGui.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrContainer.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\base\IrrColor.cpp">
+      <Filter>Classes\kernel\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrGeom.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\IrrFileUtils.cpp">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\IrrMathUtils.cpp">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\IrrStringUtils.cpp">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\CMsgSubject.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\CSocket.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\CSocketAdapter.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrBundle.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\IrrJsonUtils.cpp">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\IrrCodeTransUtils.cpp">
+      <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrPattern.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\manager\IrrMessageNotifyManager.cpp">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\manager\IrrActivityManager.cpp">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\manager\IrrMemoCacheManager.cpp">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\parser\IrrActivityParser.cpp">
+      <Filter>Classes\kernel\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\pugixml\pugixml.cpp">
+      <Filter>Classes\kernel\extends\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrWidget.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrContainer.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrGui.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C03A1804-B4B4-49E3-B68D-4213221EBF32}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\support;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(SolutionDir)extensions\GUI\CCControlExtension;$(SolutionDir)extensions\GUI\CCScrollView;$(SolutionDir)extensions\GUI\CCEditBox;$(SolutionDir)external;..\Classes\kernel\base;..\Classes\kernel\core;..\Classes\kernel\extends;..\Classes\kernel\extends\pugixml;..\Classes\kernel\manager;..\Classes\kernel\fsm;..\Classes\kernel\event;..\Classes\kernel\net;..\Classes\kernel\utils;$(SolutionDir)IrrGDK\third_party\lib_json\;$(SolutionDir)IrrGDK\third_party\db\database;$(SolutionDir)IrrGDK\third_party\iconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS_DEBUG;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);..\lib_debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libBox2d.lib;libCocosDenshion.lib;libjson.lib;database.lib;libiconv.lib;libExtensions.lib;libcurl_imp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>IrrGDK.h</HeaderFileName>
+      <InterfaceIdentifierFileName>IrrGDK_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>IrrGDK_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/IrrGDK.tlb</TypeLibraryName>
+      <DllDataFileName>
+      </DllDataFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)external;$(SolutionDir)CocosDenshion\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGSNDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libBox2d.lib;libCocosDenshion.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>IrrGDK.h</HeaderFileName>
+      <InterfaceIdentifierFileName>IrrGDK_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>IrrGDK_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/IrrGDK.tlb</TypeLibraryName>
+      <DllDataFileName>
+      </DllDataFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\Resources\CloseNormal.png" />
+    <None Include="..\Resources\CloseSelected.png" />
+    <None Include="..\Resources\HelloWorld.png" />
+    <None Include="..\Resources\MainActivity.xml" />
+    <None Include="res\IrrGDK.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IrrGDK.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\kernel\base\IrrCommon.h" />
+    <ClInclude Include="..\Classes\kernel\base\IrrMarcos.h" />
+    <ClInclude Include="..\Classes\kernel\base\IrrSingleton.h" />
+    <ClInclude Include="..\Classes\kernel\base\IrrTypeDef.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrBundle.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrColor.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrGeom.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrObject.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrPattern.h" />
+    <ClInclude Include="..\Classes\kernel\event\IrrUIEvent.h" />
+    <ClInclude Include="..\Classes\kernel\extends\pugixml\pugiconfig.hpp" />
+    <ClInclude Include="..\Classes\kernel\extends\pugixml\pugixml.hpp" />
+    <ClInclude Include="..\Classes\kernel\manager\IrrActivityManager.h" />
+    <ClInclude Include="..\Classes\kernel\manager\IrrMessageNotifyManager.h" />
+    <ClInclude Include="..\Classes\kernel\manager\IrrMemoCacheManager.h" />
+    <ClInclude Include="..\Classes\kernel\net\CMsgSubject.h" />
+    <ClInclude Include="..\Classes\kernel\net\CNetMarcos.h" />
+    <ClInclude Include="..\Classes\kernel\net\CSocket.h" />
+    <ClInclude Include="..\Classes\kernel\net\CSocketAdapter.h" />
+    <ClInclude Include="..\Classes\kernel\parser\IrrActivityParser.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrContainer.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrGui.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrWidget.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrCallBack.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrCodeTransUtils.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrFileUtils.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrJsonUtils.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrMathUtils.h" />
+    <ClInclude Include="..\Classes\kernel\utils\IrrStringUtils.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\kernel\base\IrrColor.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrBundle.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrGeom.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrPattern.cpp" />
+    <ClCompile Include="..\Classes\kernel\extends\pugixml\pugixml.cpp" />
+    <ClCompile Include="..\Classes\kernel\manager\IrrActivityManager.cpp" />
+    <ClCompile Include="..\Classes\kernel\manager\IrrMemoCacheManager.cpp" />
+    <ClCompile Include="..\Classes\kernel\manager\IrrMessageNotifyManager.cpp" />
+    <ClCompile Include="..\Classes\kernel\net\CMsgSubject.cpp" />
+    <ClCompile Include="..\Classes\kernel\net\CSocket.cpp" />
+    <ClCompile Include="..\Classes\kernel\net\CSocketAdapter.cpp" />
+    <ClCompile Include="..\Classes\kernel\parser\IrrActivityParser.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrContainer.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrGui.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrWidget.cpp" />
+    <ClCompile Include="..\Classes\kernel\utils\IrrCodeTransUtils.cpp" />
+    <ClCompile Include="..\Classes\kernel\utils\IrrFileUtils.cpp" />
+    <ClCompile Include="..\Classes\kernel\utils\IrrJsonUtils.cpp" />
+    <ClCompile Include="..\Classes\kernel\utils\IrrMathUtils.cpp" />
+    <ClCompile Include="..\Classes\kernel\utils\IrrStringUtils.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
