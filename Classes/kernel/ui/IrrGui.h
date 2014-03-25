@@ -5,11 +5,16 @@
 #include "IrrContainer.h"
 #include "IrrUIEvent.h"
 
+namespace irr_core
+{
+	class IrrGraphic;
+}
+
+using namespace irr_core;
 using namespace irr_event;
 
 namespace irr_ui
 {	
-
 	class IrrGui : public IrrContainer,public CCTouchDelegate
 	{
 	public:
@@ -18,7 +23,9 @@ namespace irr_ui
 		IrrGui(IrrSize size);
 		IrrGui(float width,float height);
 		~IrrGui(void);
-		void setGuiContentSize(float width,float height);
+		virtual void onEnter();
+		virtual void onExit();
+		virtual void onRender();
 	public:
 		//////////////////////////////////////////////////////////////////////////
 		//CCTouchDelegate
@@ -26,11 +33,11 @@ namespace irr_ui
 		void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 		void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 		void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
-		//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 		virtual void DispatchUIEvent(IrrUIEvent& event); 
 	private:
+		IrrGraphic* m_pGraphic;
 		IrrVector2D m_DownPos;
-		IrrSize m_GuiSize;
 	};
 }
 

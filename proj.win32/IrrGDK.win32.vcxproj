@@ -37,7 +37,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir>$(Configuration).win32\</IntDir>
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\support;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(SolutionDir)extensions\GUI\CCControlExtension;$(SolutionDir)extensions\GUI\CCScrollView;$(SolutionDir)extensions\GUI\CCEditBox;$(SolutionDir)external;..\Classes\kernel\base;..\Classes\kernel\core;..\Classes\kernel\extends;..\Classes\kernel\extends\pugixml;..\Classes\kernel\manager;..\Classes\kernel\fsm;..\Classes\kernel\event;..\Classes\kernel\net;..\Classes\kernel\utils;$(SolutionDir)IrrGDK\third_party\lib_json\;$(SolutionDir)IrrGDK\third_party\db\database;$(SolutionDir)IrrGDK\third_party\iconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\support;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(SolutionDir)extensions\GUI\CCControlExtension;$(SolutionDir)extensions\GUI\CCScrollView;$(SolutionDir)extensions\GUI\CCEditBox;$(SolutionDir)external;..\Classes\kernel\base;..\Classes\kernel\ui;..\Classes\kernel\core;..\Classes\kernel\display;..\Classes\kernel\ui\widget;..\Classes\kernel\extends;..\Classes\kernel\extends\pugixml;..\Classes\kernel\manager;..\Classes\kernel\fsm;..\Classes\kernel\event;..\Classes\kernel\net;..\Classes\kernel\utils;$(SolutionDir)IrrGDK\third_party\lib_json\;$(SolutionDir)IrrGDK\third_party\db\database;$(SolutionDir)IrrGDK\third_party\iconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -139,10 +139,17 @@
     <ClInclude Include="..\Classes\kernel\base\IrrSingleton.h" />
     <ClInclude Include="..\Classes\kernel\base\IrrTypeDef.h" />
     <ClInclude Include="..\Classes\kernel\core\IrrBundle.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrCamera.h" />
     <ClInclude Include="..\Classes\kernel\core\IrrColor.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrControll.h" />
     <ClInclude Include="..\Classes\kernel\core\IrrGeom.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrGraphic.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrIntent.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrInterval.h" />
     <ClInclude Include="..\Classes\kernel\core\IrrObject.h" />
     <ClInclude Include="..\Classes\kernel\core\IrrPattern.h" />
+    <ClInclude Include="..\Classes\kernel\display\IrrNode.h" />
+    <ClInclude Include="..\Classes\kernel\display\IrrSprite.h" />
     <ClInclude Include="..\Classes\kernel\event\IrrUIEvent.h" />
     <ClInclude Include="..\Classes\kernel\extends\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\Classes\kernel\extends\pugixml\pugixml.hpp" />
@@ -157,7 +164,16 @@
     <ClInclude Include="..\Classes\kernel\ui\IrrContainer.h" />
     <ClInclude Include="..\Classes\kernel\ui\IrrGui.h" />
     <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrViewport.h" />
     <ClInclude Include="..\Classes\kernel\ui\IrrWidget.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrButton.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrCheckBox.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrImage.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrPanel.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrRadioBox.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrTabControl.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrToggleButton.h" />
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrWindow.h" />
     <ClInclude Include="..\Classes\kernel\utils\IrrCallBack.h" />
     <ClInclude Include="..\Classes\kernel\utils\IrrCodeTransUtils.h" />
     <ClInclude Include="..\Classes\kernel\utils\IrrFileUtils.h" />
@@ -172,8 +188,12 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\kernel\base\IrrColor.cpp" />
     <ClCompile Include="..\Classes\kernel\core\IrrBundle.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrCamera.cpp" />
     <ClCompile Include="..\Classes\kernel\core\IrrGeom.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrGraphic.cpp" />
     <ClCompile Include="..\Classes\kernel\core\IrrPattern.cpp" />
+    <ClCompile Include="..\Classes\kernel\display\IrrNode.cpp" />
+    <ClCompile Include="..\Classes\kernel\display\IrrSprite.cpp" />
     <ClCompile Include="..\Classes\kernel\extends\pugixml\pugixml.cpp" />
     <ClCompile Include="..\Classes\kernel\manager\IrrActivityManager.cpp" />
     <ClCompile Include="..\Classes\kernel\manager\IrrMemoCacheManager.cpp" />
@@ -185,7 +205,16 @@
     <ClCompile Include="..\Classes\kernel\ui\IrrContainer.cpp" />
     <ClCompile Include="..\Classes\kernel\ui\IrrGui.cpp" />
     <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrViewport.cpp" />
     <ClCompile Include="..\Classes\kernel\ui\IrrWidget.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrButton.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrCheckBox.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrImage.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrPanel.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrRadioBox.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrTabControl.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrToggleButton.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrWindow.cpp" />
     <ClCompile Include="..\Classes\kernel\utils\IrrCodeTransUtils.cpp" />
     <ClCompile Include="..\Classes\kernel\utils\IrrFileUtils.cpp" />
     <ClCompile Include="..\Classes\kernel\utils\IrrJsonUtils.cpp" />

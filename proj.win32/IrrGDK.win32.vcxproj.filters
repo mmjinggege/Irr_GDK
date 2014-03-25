@@ -44,6 +44,12 @@
     <Filter Include="Classes\kernel\event">
       <UniqueIdentifier>{6079168d-9086-4bd4-a1ea-e74b67873cdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\kernel\ui\widget">
+      <UniqueIdentifier>{3224e4bf-d365-45bc-9442-56a1e139e85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\display">
+      <UniqueIdentifier>{f25bd536-94ab-4dfa-9dc8-a4144086165e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\IrrGDK.ico">
@@ -155,9 +161,6 @@
     <ClInclude Include="..\Classes\kernel\extends\pugixml\pugixml.hpp">
       <Filter>Classes\kernel\extends\pugixml</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h">
-      <Filter>Classes\kernel\ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\kernel\event\IrrUIEvent.h">
       <Filter>Classes\kernel\event</Filter>
     </ClInclude>
@@ -169,6 +172,36 @@
     </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\IrrContainer.h">
       <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrButton.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrCheckBox.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrImage.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrPanel.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrRadioBox.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrTabControl.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrToggleButton.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrWindow.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\display\IrrNode.h">
+      <Filter>Classes\kernel\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\display\IrrSprite.h">
+      <Filter>Classes\kernel\display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -232,9 +265,6 @@
     <ClCompile Include="..\Classes\kernel\extends\pugixml\pugixml.cpp">
       <Filter>Classes\kernel\extends\pugixml</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp">
-      <Filter>Classes\kernel\ui</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\IrrWidget.cpp">
       <Filter>Classes\kernel\ui</Filter>
     </ClCompile>
@@ -243,6 +273,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\IrrGui.cpp">
       <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrButton.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrCheckBox.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrImage.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrPanel.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrRadioBox.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrTabControl.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrToggleButton.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrWindow.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\display\IrrNode.cpp">
+      <Filter>Classes\kernel\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\display\IrrSprite.cpp">
+      <Filter>Classes\kernel\display</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -85,10 +85,10 @@ namespace irr_core
 		m_pTargetObject = NULL;
 		m_pBundle = NULL;
 	}
+}
 
-
-
-
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	IrrActivity::IrrActivity( void )
 		:m_pNetObserver(NULL),
@@ -153,8 +153,10 @@ namespace irr_core
 		return INVALIDATE;
 	}
 
+}
 
-
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	//IrrNetObserver
 	IrrNetObserver::IrrNetObserver( void )

@@ -1,16 +1,18 @@
 #ifndef _IRRWIDGET_H_
 #define _IRRWIDGET_H_
 
-#include "IrrObject.h"
+#include "IrrNode.h"
 #include "IrrTypeDef.h"
 #include "IrrUIEvent.h"
 #include "IrrGeom.h"
+#include "IrrGraphic.h"
 
+using namespace irr_core;
 using namespace irr_event;
+using namespace irr_display;
 
 namespace irr_ui
 {
-
 	class IHandlerUIEvent
 	{
 	public:
@@ -22,40 +24,54 @@ namespace irr_ui
 		virtual void handleMoveOut(IrrUIEvent& event) = 0;
 	};
 	
-	class IrrWidget : public IrrObject,public IHandlerUIEvent
+
+	class IrrWidget : public IrrNode,public IHandlerUIEvent
 	{
+	public:
+		static IrrWidget* create(const char* texture,bool isPlist = false);
 	public:
 		IrrWidget(void);
 		virtual ~IrrWidget(void);
 		virtual void setActivie(bool val);
 		bool isActivie() {return m_bIsActive;}
-		void setDimensions(const IrrSize& size);
-		IrrSize& getDimensions();
-		virtual void setLocation(float x,float y);
 		IrrRect getChildRect();
+		
+		void setWidgetParent(IrrWidget* parent);
+		IrrWidget* getWidgetParent();
+		void setName(IrrString& name);
+		IrrString& getName();
 
-		CREATE_PROPERTY_BY_BOOL(m_bIsVisible,Visible);
-		CREATE_PROPERTY(IrrUChar,m_Alpha,Alpha);
-		CREATE_PROPERTY_BY_REF(IrrString,m_Name,Name);
-		CREATE_PROPERTY_UNIMPLEMENT(IrrRect,m_Rect,WidgetRect);
-		CREATE_PROPERTY_UNIMPLEMENT(float,m_Scale,Scale);
-		CREATE_PROPERTY(IrrWidget*,m_pParent,Parent);
+		void setVisible(bool visible);
+		bool isVisible();
+		
+		void setBackgrondColor(IrrColor Color);
+		IrrColor& getBackgroundColor();
+
+		virtual void setTouchable(bool var);
+		bool isTouchable() const;
 
 		IrrVector2D convertToNodeSpace(const IrrVector2D& pt);
-
-		//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 		virtual void handleDown( IrrUIEvent& event );
 		virtual void handleUp( IrrUIEvent& event );
 		virtual void handleClick( IrrUIEvent& event );
 		virtual void handleMoveIn( IrrUIEvent& event );
 		virtual void handleMove( IrrUIEvent& event );
 		virtual void handleMoveOut( IrrUIEvent& event );
-		//////////////////////////////////////////////////////////////////////////
-	private:
+		
+		//draw function
+		virtual void render(IrrGraphic* pGraphic);
+	private:		
+		bool init(const char* texture,bool isPlist = false);
+	protected:
 		bool m_bIsActive;
-		IrrSize m_Dimension;
 		IrrVector2D m_Pos;
 		bool m_bDirty;
+		IrrWidget* m_pWidgetParent;
+		IrrString m_Name;
+		IrrColor m_backgroundColor;
+		bool m_bIsVisible;
+		bool m_bIsTouchable;
 	};
 }
 

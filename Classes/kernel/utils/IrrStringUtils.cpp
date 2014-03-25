@@ -42,7 +42,7 @@ namespace irr_utils
 
 	unsigned int IrrStringUtils::StringToUInt( const IrrString& s )
 	{
-		unsigned int retVal = StringToUInt(s);
+		unsigned int retVal = StringToInt(s);
 		return retVal;
 	}
 

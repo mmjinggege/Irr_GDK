@@ -18,6 +18,7 @@ typedef long					IrrLong;
 typedef std::string				IrrString;
 typedef bool					IrrBool;
 typedef const char*				*IrrConstChar;
+typedef unsigned long			IrrGUID;
 
 typedef std::vector<IrrString>	IrrStringVec;
 typedef std::list<IrrString>	IrrStringList;

@@ -73,6 +73,9 @@ public: virtual const varType& get##funName(void) const { return varName; }
 #define IRR_SAFE_DELETE_ARRAY(p)				do { if(p) { delete[] (p); (p) = 0; } } while(0)
 #define IRR_SAFE_DELETE(p)						do {if(p) {delete(p);(p)=0;	}} while(0)
 
+#define IRR_SAFE_RELEASE(p)            do { if(p) { (p)->release(); } } while(0)
+
+#define IRR_SAFE_RETAIN(p)            do { if(p) { (p)->retain(); } } while(0)
 
 //abs
 #define  tabs(a)  (((a) > 0)?(a):(-(a)))
@@ -98,9 +101,9 @@ public: virtual const varType& get##funName(void) const { return varName; }
 #include <assert.h>
 
 #if CC_DISABLE_ASSERT > 0
-#define CC_ASSERT(cond)
+#define IRR_ASSERT(cond)
 #else
-#define CC_ASSERT(cond)    assert(cond)
+#define IRR_ASSERT(cond)    assert(cond)
 #endif
 #define CC_UNUSED_PARAM(unusedparam) (void)unusedparam
 

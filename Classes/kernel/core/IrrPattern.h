@@ -24,8 +24,11 @@ namespace irr_core
 		CREATE_PROPERTY(IrrObject*,m_pTarget,RespTarget);
 		CREATE_PROPERTY(IrrBundle*,m_pBundle,Bundle);
 	};
+}
 
-	
+
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	//IrrItent
 	class IrrIntent
@@ -47,8 +50,10 @@ namespace irr_core
 		CREATE_PROPERTY(IrrObject*,m_pTargetObject,TargetObj);
 		CREATE_PROPERTY(IrrBundle*,m_pBundle,Bundle);
 	};
+}
 
-
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	//IrrCommand
 	class IrrCommand : public IrrObject
@@ -59,8 +64,10 @@ namespace irr_core
 		virtual void Execute(void* data) = 0;
 	};
 
+}
 
-
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	//IrrNetObserver
 	class IrrNetObserver : public IrrObject
@@ -75,7 +82,10 @@ namespace irr_core
 		virtual void unRegisterCommander(int commandID);
 		virtual void ExecuteCommander(int commanderID,void* data);
 	};
+}
 
+namespace irr_core
+{
 	//////////////////////////////////////////////////////////////////////////
 	//IrrActivity
 	class IrrActivity : public IrrObject
@@ -99,8 +109,6 @@ namespace irr_core
 		CREATE_PROPERTY(int,m_pNetObserverID,NetObserverID);
 	};
 	//////////////////////////////////////////////////////////////////////////
-
-	
 }
 
 #endif	//_IRRPATTERN_H_

@@ -2,6 +2,12 @@
 
 using namespace cocos2d;
 
+#include "IrrButton.h"
+#include "IrrCamera.h"
+
+using namespace irr_ui;
+
+
 CCScene* HelloWorld::scene()
 {
     CCScene * scene = NULL;
@@ -18,7 +24,6 @@ CCScene* HelloWorld::scene()
         // add layer as a child to scene
         scene->addChild(layer);
     } while (0);
-
     // return the scene
     return scene;
 }
@@ -84,6 +89,16 @@ bool HelloWorld::init()
         this->addChild(pSprite, 0);
 
         bRet = true;
+//////////////////////////////////////////////////////////////////////////
+		shareCamera->setSceneSize(size.width,size.height);
+		this->addChild((CCNode*)(shareCamera->getGUI()));
+		
+		IrrButton* button = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+		button->setPosition(300,300);
+		button->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+		shareCamera->appendToGUI(button);
+
+		
     } while (0);
 
     return bRet;
@@ -94,4 +109,10 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     // "close" menu item clicked
     CCDirector::sharedDirector()->end();
 }
+
+void HelloWorld::onClickHandler( CCObject* sender )
+{
+	LOG("onClickHandler");
+}
+
 

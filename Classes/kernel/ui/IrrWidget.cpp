@@ -1,16 +1,19 @@
 #include "IrrWidget.h"
+#include "IrrSprite.h"
 
 namespace irr_ui
 {
-
 	IrrWidget::IrrWidget( void )
-		:m_pParent(NULL),
-		m_bDirty(false)
+		:m_pWidgetParent(NULL),
+		m_bDirty(false),
+		m_bIsVisible(false),
+		m_bIsTouchable(false)
 	{
 	}
 
 	IrrWidget::~IrrWidget( void )
 	{
+		removeAllChildrenWithCleanup(true);
 	}
 	
 	void IrrWidget::setActivie( bool val )
@@ -18,34 +21,6 @@ namespace irr_ui
 		m_bIsActive  = val;
 	}
 	
-	void IrrWidget::setDimensions( const IrrSize& size )
-	{
-		m_Dimension = size;
-	}
-
-	IrrSize& IrrWidget::getDimensions()
-	{
-		return m_Dimension;
-	}
-
-	void IrrWidget::setWidgetRect(IrrRect var)
-	{
-		m_Rect = var;
-		if( 0 == m_Dimension.width && 0 == m_Dimension.height)
-		{
-			this->setDimensions(m_Rect.size);
-		}
-	}
-
-	IrrRect IrrWidget::getWidgetRect()
-	{
-		//this->updateContentSizeInner();
-		IrrRect ret = m_Rect;
-		ret.size.width *= m_Scale;
-		ret.size.height *= m_Scale;
-		return ret;
-	}
-
 
 	IrrVector2D IrrWidget::convertToNodeSpace( const IrrVector2D& pt )
 	{
@@ -54,31 +29,16 @@ namespace irr_ui
 		ret.Y -= m_Rect.origin.Y;
 		return ret;
 	}
-
-	void IrrWidget::setScale(float var)
-	{
-		m_Scale = var;
-		m_bDirty = true;
-	}
-
-	float IrrWidget::getScale()
-	{
-		return m_Scale;
-	}
+		
 
 	IrrRect IrrWidget::getChildRect()
 	{
-		IrrRect rc = this->getWidgetRect();
+		IrrRect rc = this->getRect();
 		rc.origin.setVector2D(0,0);
 		return rc;
 	}
-
-
-	void IrrWidget::setLocation( float x,float y )
-	{
-		m_Pos.setVector2D(x,y);
-	}
 	
+	//////////////////////////////////////////////////////////////////////////
 	void IrrWidget::handleDown( IrrUIEvent& event )
 	{
 		//override
@@ -107,6 +67,82 @@ namespace irr_ui
 	void IrrWidget::handleMoveOut( IrrUIEvent& event )
 	{
 		//override
+	}
+
+	void IrrWidget::setWidgetParent( IrrWidget* parent)
+	{
+		m_pWidgetParent = parent;
+	}
+
+	IrrWidget* IrrWidget::getWidgetParent()
+	{
+		return m_pWidgetParent;
+	}
+
+	void IrrWidget::setName( IrrString& name )
+	{
+		m_Name = name;
+	}
+
+	IrrString& IrrWidget::getName()
+	{
+		return m_Name;
+	}
+
+	IrrWidget* IrrWidget::create( const char* texture,bool isPlist /*= false*/ )
+	{
+		IrrWidget* pRet = new IrrWidget();
+		if(pRet && pRet->init(texture,isPlist))
+		{
+			pRet->autorelease();
+			return pRet;
+		}
+		IRR_SAFE_DELETE(pRet);
+		return NULL;
+	}
+	
+
+	bool IrrWidget::init( const char* texture,bool isPlist /*= false*/ )
+	{
+		IrrSprite* target = IrrSprite::create(texture,isPlist);
+		this->addChild(target);
+		setDimensions(target->getDimensions());
+		return true;
+	}
+
+	void IrrWidget::render( IrrGraphic* pGraphic )
+	{
+		;//todo;
+	}
+
+	void IrrWidget::setBackgrondColor( IrrColor Color )
+	{
+		m_backgroundColor = Color;
+	}
+
+	IrrColor& IrrWidget::getBackgroundColor()
+	{
+		return m_backgroundColor;
+	}
+
+	void IrrWidget::setVisible( bool visible )
+	{
+		m_bIsVisible = visible;
+	}
+
+	bool IrrWidget::isVisible()
+	{
+		return m_bIsVisible;
+	}
+
+	void IrrWidget::setTouchable( bool var )
+	{
+		m_bIsTouchable = var;
+	}
+
+	bool IrrWidget::isTouchable() const
+	{
+		return m_bIsTouchable;
 	}
 
 }

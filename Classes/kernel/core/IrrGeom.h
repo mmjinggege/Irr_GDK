@@ -88,6 +88,8 @@ namespace irr_core
 		IrrRect(const IrrRect& rect);
 		IrrRect& operator=(const IrrRect& rect);
 		void setRect(float x,float y,float width,float height);
+		float getOriginX() const;
+		float getOriginY() const;
 		float getMinX() const;
 		float getMidX() const;
 		float getMax()  const;
@@ -103,7 +105,29 @@ namespace irr_core
 		IrrVector2D origin;
 		IrrSize size;
 	};
+
+
+	//////////////////////////////////////////////////////////////////////////
+	class IrrClipRect : public IrrRect
+	{
+	public:
+		IrrClipRect(void);
+		IrrClipRect(float x,float y,float width,float height,float xOffset,float yOffset);
+		~IrrClipRect(void);
+		const IrrClipRect& operator=(const IrrRect& other);
+		float m_fXOffset;
+		float m_fYOffset;
+	};
 	//////////////////////////////////////////////////////////////////////////
 }
+
+#define CreateIrrVector2D(x, y)				IrrVector2D((float)(x), (float)(y))
+#define CreateIrrSize(width, height)		IrrSize((float)(width), (float)(height))
+#define CreateIrrRect(x, y, width, height)	IrrRect((float)(x), (float)(y), (float)(width), (float)(height))
+#define CreateIrrColor(r,g,b,a)				IrrColor((r),(g),(b),(a))
+
+// const IrrVector2D PointZero = CreateIrrVector2D(0,0);
+// const IrrSize SizeZero = CreateIrrSize(0,0);
+// const IrrRect RectZero = CreateIrrRect(0,0,0,0);
 
 #endif	//_IRRGEOM_H_

@@ -6,8 +6,9 @@
 namespace irr_ui
 {
 
-	typedef std::list<IrrWidget*> IrrWidgetList;
-	typedef IrrWidgetList::iterator pIrrWidgetItor;	
+	typedef std::list<IrrWidget*> IrrWidgetTouchableList;
+	typedef IrrWidgetTouchableList::iterator pIrrWidgetItor;	
+	typedef IrrWidgetTouchableList::reverse_iterator pIrrWidgetReverseItor;
 
 	class IrrContainer : public IrrWidget
 	{
@@ -15,6 +16,7 @@ namespace irr_ui
 		IrrContainer(void);
 		virtual ~IrrContainer(void);
 
+		virtual void render(IrrGraphic* pGraphic);
 		virtual void addWidget(IrrWidget* widget);
 		virtual void addWidget(IrrWidget* widget,IrrVector2D pos);
 		virtual void removeWidget(IrrWidget* widget,bool isDel = true);
@@ -34,7 +36,7 @@ namespace irr_ui
 		virtual void handleMoveOut( IrrUIEvent& event );
 		//////////////////////////////////////////////////////////////////////////
 	protected:
-		IrrWidgetList m_Childrens;
+		IrrWidgetTouchableList m_TouchableChilds;
 		IrrWidget* m_pCurrentSelWidget;
 	};
 }

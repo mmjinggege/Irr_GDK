@@ -8,6 +8,7 @@ typedef enum __IrrObjectType
 	IRR_NET_OBSERVER,
 	IRR_COMMAND,
 	IRR_MESSAGENOTIFY,
+	IRR_SPRITE,
 } Irr_ObjType;
 
 typedef enum __ResponseCode

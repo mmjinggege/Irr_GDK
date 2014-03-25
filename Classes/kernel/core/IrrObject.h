@@ -3,6 +3,7 @@
 
 #include "IrrTypeDef.h"
 #include "IrrMarcos.h"
+#include "IrrCommon.h"
 
 namespace irr_core
 {

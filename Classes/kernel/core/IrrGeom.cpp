@@ -330,4 +330,48 @@ namespace irr_core
 	{
 
 	}
+
+	float IrrRect::getOriginX() const
+	{
+		return origin.X;
+	}
+
+	float IrrRect::getOriginY() const
+	{
+		return origin.Y;
+	}
+
+
+	//////////////////////////////////////////////////////////////////////////
+	IrrClipRect::IrrClipRect( void )
+	{
+		origin.X = 0;
+		origin.Y = 0;
+		size.width = 0;
+		size.height = 0;
+		m_fXOffset = 0;
+		m_fYOffset = 0;
+	}
+
+	IrrClipRect::IrrClipRect( float x,float y,float width,float height,float xOffset,float yOffset )
+	{
+		origin.X = x;
+		origin.Y = y;
+		size.width = width;
+		size.height = height;
+		m_fXOffset = xOffset;
+		m_fYOffset = yOffset;
+	}
+
+	IrrClipRect::~IrrClipRect( void )
+	{
+
+	}
+
+	const IrrClipRect& IrrClipRect::operator=( const IrrRect& other )
+	{
+		origin = other.origin;
+		size   = other.size;
+		return *this;
+	}
 }

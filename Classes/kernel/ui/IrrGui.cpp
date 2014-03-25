@@ -1,4 +1,5 @@
 #include "IrrGui.h"
+#include "IrrGraphic.h"
 
 using namespace irr_event;
 using namespace irr_ui;
@@ -7,25 +8,21 @@ namespace irr_ui
 {
 
 	IrrGui::IrrGui( IrrSize size )
-		:m_GuiSize(size)
 	{
+		m_Rect.size = size;
+		m_pGraphic = NULL;
 	}
 
 	IrrGui::IrrGui( float width,float height )
 	{
-		m_GuiSize.width = width;
-		m_GuiSize.height = height;
+		m_Rect.size.setSize(width,height);
+		m_pGraphic = IrrGraphic::getInstance();
+		m_pGraphic->setGraphicSize(width,height);
 	}
 
 	IrrGui::~IrrGui( void )
 	{
 	}
-	
-	void IrrGui::setGuiContentSize( float width,float height )
-	{
-		m_GuiSize.setSize(width,height);
-	}
-	
 
 	bool IrrGui::ccTouchBegan( CCTouch *pTouch, CCEvent *pEvent )
 	{
@@ -33,9 +30,9 @@ namespace irr_ui
 		CCPoint pt = pTouch->getLocationInView();
 		IrrVector2D touchLocation;
 		touchLocation.setVector2D(pt.x,pt.y);
-		m_DownPos = touchLocation;
 		touchLocation = this->convertToNodeSpace(touchLocation);
-		if(this->getChildRect().containsVector2D(touchLocation))
+		IrrRect rect = this->getRect();
+		if(rect.containsVector2D(touchLocation))
 		{
 			IrrUIEvent evt(this,IRR_UI_EVENT_DOWN);
 			evt.setPos(touchLocation);
@@ -75,7 +72,7 @@ namespace irr_ui
 	{
 		//todo
 	}
-
+	
 	void IrrGui::DispatchUIEvent( IrrUIEvent& event )
 	{
 		switch (event.getEvtType())
@@ -105,6 +102,37 @@ namespace irr_ui
 				this->handleMoveOut(event);
 				break;
 			}
+		case IRR_UI_EVENT_CLICK:
+			{
+				this->handleClick(event);
+				break;
+			}
 		}
 	}
+
+	void IrrGui::onEnter()
+	{
+		 CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1, true);
+		CCNode::onEnter();
+	}
+
+	void IrrGui::onExit()
+	{
+		CCNode::onExit();
+			 CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+	}
+
+	void IrrGui::onRender()
+	{
+		m_pGraphic->beginDraw();
+		m_pGraphic->pushClipArea(this->getRect());
+		//draw background
+		m_pGraphic->setColor(this->getBackgroundColor());
+		m_pGraphic->fillRectangle(this->getChildRect());
+		//draw children
+		IrrContainer::render(m_pGraphic);
+		m_pGraphic->popClipArea();	
+		m_pGraphic->endDraw();
+	}
+
 }
