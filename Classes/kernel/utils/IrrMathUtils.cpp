@@ -11,12 +11,13 @@ namespace irr_utils
 	const float IrrMathUtils::Log10E = 0.4342945f;
 	const float IrrMathUtils::Log2E = 1.442695f;
 	const float IrrMathUtils::Pi = 3.141593f;
-	const float IrrMathUtils = 1.570796f;
+	const float IrrMathUtils::PiOver2 = 1.570796f;
 	const float IrrMathUtils::PiOver4 = 0.7853982f;
 	const float IrrMathUtils::TwoPi = 6.283185f;
 	const float IrrMathUtils::MaxFloat = 3.402823E+38f;
 	const float IrrMathUtils::MinFloat = -3.402823E+38f;
 	const float IrrMathUtils::Epsilon = 0.000001f;
+	const float IrrMathUtils::SQRT2  = 1.4142135623730951;
 
 	
 	float IrrMathUtils::ToDegrees( float radians )
@@ -91,6 +92,17 @@ namespace irr_utils
 			return true;
 		}
 		return false;
+	}
+
+
+	float IrrMathUtils::IrrCos( float angle )
+	{
+		return cos(angle);
+	}
+
+	float IrrMathUtils::IrrSin( float angle )
+	{
+		return sin(angle);
 	}
 
 }

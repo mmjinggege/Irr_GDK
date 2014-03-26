@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IrrManifest>
+  <Activitys>
+    <Activity id="10000" name="MainAcvitiy" Gui="mainUI.xml" NetObserverID=""/>
+  </Activitys>
+  
+  
+  <NetObservers>
+    <Observer id="10" name="GameObserver">
+      <Commander id="1"/>
+    </Observer>
+  </NetObservers>
+</IrrManifest>

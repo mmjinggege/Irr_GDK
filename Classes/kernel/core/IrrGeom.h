@@ -50,7 +50,29 @@ namespace irr_core
 		static IrrVector2D UnitY;
 	};
 	//////////////////////////////////////////////////////////////////////////
+	
+	class IrrVector3D
+	{
+	public:
+		float X;
+		float Y;
+		float Z;
+	public:
+		IrrVector3D(void);
+		IrrVector3D(const IrrVector3D& other);
+		IrrVector3D(float x,float y,float z);
+		~IrrVector3D(void);
 
+		bool operator==(const IrrVector3D &v) const;
+		bool operator!=(const IrrVector3D &v) const;
+		
+		IrrVector3D operator-(const IrrVector3D &v) const;
+		IrrVector3D operator+(const IrrVector3D &v) const;
+		IrrVector3D operator/(float divider) const;
+		IrrVector3D operator*(float scaleFactor) const;
+
+		void setVector3D(float x,float y,float z);
+	};
 
 	//////////////////////////////////////////////////////////////////////////
 	class IrrSize
@@ -107,6 +129,7 @@ namespace irr_core
 	};
 
 
+
 	//////////////////////////////////////////////////////////////////////////
 	class IrrClipRect : public IrrRect
 	{
@@ -118,6 +141,9 @@ namespace irr_core
 		float m_fXOffset;
 		float m_fYOffset;
 	};
+	//////////////////////////////////////////////////////////////////////////
+
+
 	//////////////////////////////////////////////////////////////////////////
 }
 

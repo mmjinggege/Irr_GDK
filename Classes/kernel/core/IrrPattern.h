@@ -3,6 +3,7 @@
 
 #include "IrrObject.h"
 #include "IrrCommon.h"
+#include "IrrNetMsgSubject.h"
 
 namespace irr_core
 {
@@ -66,23 +67,24 @@ namespace irr_core
 
 }
 
+
 namespace irr_core
 {
 	//////////////////////////////////////////////////////////////////////////
 	//IrrNetObserver
-	class IrrNetObserver : public IrrObject
+	class IrrNetObserver : public IrrObject,public irr_net::INetMsgObserver
 	{
 	public:
 		IrrNetObserver(void);
 		virtual~IrrNetObserver(void);
-		virtual void onResponseHandler(IrrResponse* response);
-		virtual void onHandlerDataStream(void* pMsg);
 		virtual void registerCommander(IrrCommand* commander);
 		virtual void unRegisterCommander(IrrCommand* commander);
 		virtual void unRegisterCommander(int commandID);
 		virtual void ExecuteCommander(int commanderID,void* data);
+		virtual void onUpdate(void* pMsgHead);
 	};
 }
+
 
 namespace irr_core
 {
@@ -99,13 +101,10 @@ namespace irr_core
 		virtual void onPending();
 		virtual void startActivity(IrrIntent* intent);
 		virtual void startActivity(int activityId);
-		virtual int getNetObserverByID(int observerID);
+		virtual IrrNetObserver* getNetObserverByID(int observerID);
 		virtual void loadGUI(IrrBundle* bundle);
-		virtual void onResponseHandler(IrrResponse* response);
-		virtual void onUpdate( void* pMsgHead );
 		
 		CREATE_PROPERTY_BY_BOOL(m_bisActive,Active);
-		CREATE_PROPERTY(IrrNetObserver*,m_pNetObserver,NetObserver);
 		CREATE_PROPERTY(int,m_pNetObserverID,NetObserverID);
 	};
 	//////////////////////////////////////////////////////////////////////////

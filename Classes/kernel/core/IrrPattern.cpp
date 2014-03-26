@@ -91,8 +91,7 @@ namespace irr_core
 {
 	//////////////////////////////////////////////////////////////////////////
 	IrrActivity::IrrActivity( void )
-		:m_pNetObserver(NULL),
-		m_bisActive(false),
+		:m_bisActive(false),
 		m_pNetObserverID(INVALIDATE)
 	{
 		setObjType(Irr_ObjType::IRR_ACTIVITY);
@@ -135,25 +134,13 @@ namespace irr_core
 		/*IrrIntent intent(INTENT_LOAD_UI,getObjectID(),SERVICE_GUI,bundle);*/
 	}
 
-	void IrrActivity::onResponseHandler( IrrResponse* response )
+	IrrNetObserver* IrrActivity::getNetObserverByID( int observerID )
 	{
-		if(response->getRespTarget() != this) return;
-		IRR_CHECK_NULL(m_pNetObserver);
-		m_pNetObserver->onResponseHandler(response);
-	}
-
-	void IrrActivity::onUpdate( void* pMsgHead )
-	{
-		IRR_CHECK_NULL(m_pNetObserver);
-		m_pNetObserver->onHandlerDataStream(pMsgHead);
-	}
-
-	int IrrActivity::getNetObserverByID( int observerID )
-	{
-		return INVALIDATE;
+		return (IrrNetObserver*)IrrMemoCacheMgr->getIrrObjectByID(IRR_NET_OBSERVER,observerID);
 	}
 
 }
+
 
 namespace irr_core
 {
@@ -166,17 +153,7 @@ namespace irr_core
 	IrrNetObserver::~IrrNetObserver( void )
 	{
 	}
-
-	void IrrNetObserver::onResponseHandler( IrrResponse* response )
-	{
-		IRR_CHECK_NULL(response);
-	}
-
-	void IrrNetObserver::onHandlerDataStream( void* pMsg )
-	{
-		IRR_CHECK_NULL(pMsg);
-	}
-
+	
 	void IrrNetObserver::registerCommander( IrrCommand* commander )
 	{
 		IRR_CHECK_NULL(commander);
@@ -207,7 +184,13 @@ namespace irr_core
 			if(commander->getObjectID() == commanderID)
 			{
 				commander->Execute(data);
+				break;
 			}
 		}
+	}
+
+	void IrrNetObserver::onUpdate( void* pMsgHead )
+	{
+		;//TODO
 	}
 }

@@ -41,9 +41,6 @@ namespace irr_ui
 		void setName(IrrString& name);
 		IrrString& getName();
 
-		void setVisible(bool visible);
-		bool isVisible();
-		
 		void setBackgrondColor(IrrColor Color);
 		IrrColor& getBackgroundColor();
 
@@ -70,7 +67,7 @@ namespace irr_ui
 		IrrWidget* m_pWidgetParent;
 		IrrString m_Name;
 		IrrColor m_backgroundColor;
-		bool m_bIsVisible;
+
 		bool m_bIsTouchable;
 	};
 }

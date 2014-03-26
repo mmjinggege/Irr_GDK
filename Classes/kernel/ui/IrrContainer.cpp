@@ -15,7 +15,11 @@ namespace irr_ui
 
 	void IrrContainer::addWidget( IrrWidget* widget)
 	{
-		this->addWidget(widget,IrrVector2D(0,0));
+		//////////////////////////////////////////////////////////////////////////
+		//chenjing
+		this->addWidget(widget,widget->getOrigin());
+		//////////////////////////////////////////////////////////////////////////
+		//this->addWidget(widget,IrrVector2D(0,0));
 	}
 
 	void IrrContainer::addWidget( IrrWidget* widget,IrrVector2D pos )
@@ -135,6 +139,7 @@ namespace irr_ui
 					if(event.isHandled())
 					{
 						m_pCurrentSelWidget = pTemp;
+						break;
 					}
 				}
 				rItor++;

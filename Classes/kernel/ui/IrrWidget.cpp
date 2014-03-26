@@ -6,7 +6,6 @@ namespace irr_ui
 	IrrWidget::IrrWidget( void )
 		:m_pWidgetParent(NULL),
 		m_bDirty(false),
-		m_bIsVisible(false),
 		m_bIsTouchable(false)
 	{
 	}
@@ -123,16 +122,6 @@ namespace irr_ui
 	IrrColor& IrrWidget::getBackgroundColor()
 	{
 		return m_backgroundColor;
-	}
-
-	void IrrWidget::setVisible( bool visible )
-	{
-		m_bIsVisible = visible;
-	}
-
-	bool IrrWidget::isVisible()
-	{
-		return m_bIsVisible;
 	}
 
 	void IrrWidget::setTouchable( bool var )

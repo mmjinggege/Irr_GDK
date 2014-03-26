@@ -1,4 +1,4 @@
-#include "HelloWorldScene.h"
+﻿#include "HelloWorldScene.h"
 
 using namespace cocos2d;
 
@@ -97,8 +97,18 @@ bool HelloWorld::init()
 		button->setPosition(300,300);
 		button->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		shareCamera->appendToGUI(button);
+		std::string name = "btn 0";
+		button->setName(name);
 
-		
+		IrrButton* button1 = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+		button1->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+		std::string name1 = "btn 1";
+		button1->setName(name1);
+		button1->setPosition(300,290);
+		shareCamera->appendToGUI(button1);
+		CCLabelTTF *pLable = CCLabelTTF::create("中国我唉唉和圣殿", "Marker Felt", 30);
+		pLable->setPosition(ccp(200,200));
+		this->addChild(pLable);
     } while (0);
 
     return bRet;
@@ -113,6 +123,8 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 void HelloWorld::onClickHandler( CCObject* sender )
 {
 	LOG("onClickHandler");
+	IrrButton* pBtn = (IrrButton*)sender;
+	CCLOG("click:%s",pBtn->getName().c_str());
 }
 
 

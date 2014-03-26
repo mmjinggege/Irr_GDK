@@ -4,6 +4,7 @@
 #include "IrrWidget.h"
 #include "IrrGui.h"
 
+// static float Correct = Mathutils.cos( -Math.PI / 6) * Math.SQRT2;
 
 namespace irr_core
 {
@@ -97,5 +98,4 @@ namespace irr_core
 			m_IrrGui->removeWidget(widget,isDel);
 		}
 	}
-
 }

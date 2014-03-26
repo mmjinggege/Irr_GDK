@@ -375,3 +375,71 @@ namespace irr_core
 		return *this;
 	}
 }
+
+
+namespace irr_core
+{
+	IrrVector3D::IrrVector3D( void )
+	{
+		X = Y = Z = 0;
+	}
+
+	IrrVector3D::IrrVector3D( const IrrVector3D& other )
+	{
+		X = other.X;
+		Y = other.Y;
+		Z = other.Z;
+	}
+
+	IrrVector3D::IrrVector3D( float x,float y,float z )
+		:X(x),
+		Y(y),
+		Z(z)
+	{
+	}
+
+	IrrVector3D::~IrrVector3D( void )
+	{
+
+	}
+
+	bool IrrVector3D::operator==( const IrrVector3D &v ) const
+	{
+		return (X == v.X && Y == v.Y && Z == v.Z);
+	}
+
+	bool IrrVector3D::operator!=( const IrrVector3D &v ) const
+	{
+		return !(*this == v);
+	}
+
+	
+	IrrVector3D IrrVector3D::operator-( const IrrVector3D &v ) const
+	{
+		return IrrVector3D(X - v.X,Y - v.Y,Z - v.Z);
+	}
+
+
+	IrrVector3D IrrVector3D::operator+( const IrrVector3D &v ) const
+	{
+		return IrrVector3D(X + v.X,Y - v.Y,Z - v.Z);
+	}
+
+
+	IrrVector3D IrrVector3D::operator/( float divider ) const
+	{
+		return IrrVector3D(X / divider,Y / divider,Z /divider);
+	}
+
+	IrrVector3D IrrVector3D::operator*( float scaleFactor ) const
+	{
+		return IrrVector3D(X * scaleFactor,Y * scaleFactor,Z  * scaleFactor);
+	}
+
+	void IrrVector3D::setVector3D( float x,float y,float z )
+	{
+		X = x;
+		Y = y;
+		Z = z;
+	}
+}

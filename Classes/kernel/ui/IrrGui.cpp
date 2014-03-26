@@ -1,7 +1,6 @@
 #include "IrrGui.h"
 #include "IrrGraphic.h"
 
-using namespace irr_event;
 using namespace irr_ui;
 
 namespace irr_ui

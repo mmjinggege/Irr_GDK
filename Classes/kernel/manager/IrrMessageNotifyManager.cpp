@@ -12,7 +12,7 @@ namespace irr_manager
 		m_name = new char[strlen(name)+1];
 		memset(m_name,0,strlen(name)+1);
 		IrrString orgi(name);
-		orgi.copy(m_name,strlen(name),0);
+		//orgi.copy(m_name,strlen(name),0);
 		m_nHandler = 0;
 	}
 

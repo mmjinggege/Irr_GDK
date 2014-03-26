@@ -31,6 +31,9 @@ namespace irr_display
 		virtual void setRect(IrrRect& rect);
 		IrrRect getRect() const;
 
+		void updateLocation(float offsetX,float offsetY);
+		void updateLocation(IrrVector2D& postion);
+
 		virtual void setDimensions(IrrSize& size);
 		virtual void setDimensions(float width,float height);
 		IrrSize& getDimensions();

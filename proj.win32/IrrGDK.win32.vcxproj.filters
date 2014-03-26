@@ -50,6 +50,15 @@
     <Filter Include="Classes\kernel\display">
       <UniqueIdentifier>{f25bd536-94ab-4dfa-9dc8-a4144086165e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\kernel\extends\sneaky">
+      <UniqueIdentifier>{cf204364-2945-45ab-9eda-61823dd4d027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\sample">
+      <UniqueIdentifier>{8155c100-703d-4f88-803b-c4b3b0c5e7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\kernel\extends\iso">
+      <UniqueIdentifier>{b035fbdf-3c53-457e-808c-cf844a2791ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\IrrGDK.ico">
@@ -122,18 +131,6 @@
     <ClInclude Include="..\Classes\kernel\utils\IrrStringUtils.h">
       <Filter>Classes\kernel\utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\kernel\net\CMsgSubject.h">
-      <Filter>Classes\kernel\net</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\kernel\net\CNetMarcos.h">
-      <Filter>Classes\kernel\net</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\kernel\net\CSocket.h">
-      <Filter>Classes\kernel\net</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\kernel\net\CSocketAdapter.h">
-      <Filter>Classes\kernel\net</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\kernel\utils\IrrJsonUtils.h">
       <Filter>Classes\kernel\utils</Filter>
     </ClInclude>
@@ -203,6 +200,52 @@
     <ClInclude Include="..\Classes\kernel\display\IrrSprite.h">
       <Filter>Classes\kernel\display</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrCamera.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrControll.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrGraphic.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrIntent.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrInterval.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h" />
+    <ClInclude Include="..\Classes\kernel\ui\IrrViewport.h" />
+    <ClInclude Include="..\Classes\kernel\extends\sneaky\SneakyButton.h">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\sneaky\SneakyButtonSkinnedBase.h">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\sneaky\SneakyJoystick.h">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\sneaky\SneakyJoystickSkinnedBase.h">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\IrrSocket.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\IrrSocketAdapter.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\IrrNetMarcos.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\net\IrrNetMsgSubject.h">
+      <Filter>Classes\kernel\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\base\IrrEnumDef.h">
+      <Filter>Classes\kernel\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\display\IrrLayer.h">
+      <Filter>Classes\kernel\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sample\CMainLayer.h">
+      <Filter>Classes\sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrPngLabel.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\iso\IrrISO.h">
+      <Filter>Classes\kernel\extends\iso</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -228,15 +271,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\utils\IrrStringUtils.cpp">
       <Filter>Classes\kernel\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\kernel\net\CMsgSubject.cpp">
-      <Filter>Classes\kernel\net</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\kernel\net\CSocket.cpp">
-      <Filter>Classes\kernel\net</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\kernel\net\CSocketAdapter.cpp">
-      <Filter>Classes\kernel\net</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\core\IrrBundle.cpp">
       <Filter>Classes\kernel\core</Filter>
@@ -303,6 +337,46 @@
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\display\IrrSprite.cpp">
       <Filter>Classes\kernel\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrCamera.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrGraphic.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp" />
+    <ClCompile Include="..\Classes\kernel\ui\IrrViewport.cpp" />
+    <ClCompile Include="..\Classes\kernel\extends\sneaky\SneakyButton.cpp">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\sneaky\SneakyButtonSkinnedBase.cpp">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\sneaky\SneakyJoystick.cpp">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\sneaky\SneakyJoystickSkinnedBase.cpp">
+      <Filter>Classes\kernel\extends\sneaky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\IrrSocket.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\IrrSocketAdapter.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\net\IrrNetMsgSubject.cpp">
+      <Filter>Classes\kernel\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\base\IrrCommon.cpp">
+      <Filter>Classes\kernel\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\display\IrrLayer.cpp">
+      <Filter>Classes\kernel\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sample\CMainLayer.cpp">
+      <Filter>Classes\sample</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrPngLabel.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\iso\IrrISO.cpp">
+      <Filter>Classes\kernel\extends\iso</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

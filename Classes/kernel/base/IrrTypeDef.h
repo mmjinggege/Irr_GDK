@@ -23,6 +23,7 @@ typedef unsigned long			IrrGUID;
 typedef std::vector<IrrString>	IrrStringVec;
 typedef std::list<IrrString>	IrrStringList;
 typedef std::set<IrrString>		IrrStringSet;
+typedef std::list<int>			IrrIntList;
 
 #define INVALIDATE -1
 

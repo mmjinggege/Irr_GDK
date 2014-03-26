@@ -1,0 +1,67 @@
+#ifndef _IRRENUMDEF_H_
+#define _IRRENUMDEF_H_
+
+
+typedef enum __IrrObjectType
+{
+	IRR_OBJECT = 0x00,
+	IRR_ACTIVITY,
+	IRR_NET_OBSERVER,
+	IRR_COMMAND,
+	IRR_MESSAGENOTIFY,
+	IRR_SPRITE,
+} Irr_ObjType;
+
+typedef enum __ResponseCode
+{
+	RESPONSE_UNKOWN,
+	RESPONSE_START_ACTIVITY_SUCCESS,
+	RESPONSE_START_ACTIVITY_FAILURE,
+	RESPONSE_CODE_SUCCESS,
+	RESPONSE_CODE_FAILURE,
+	RESPONSE_BIND_SERVICE_SUCCESS,
+	RESPONSE_BIND_SERVICE_FAILURE,
+	RESPONSE_HAS_BINDED,
+	RESPONSE_GET_ACTIVITY_SUCCESS,
+	RESPONSE_GET_ACTIVITY_FAILURE,
+	RESPONSE_GET_SERVICE,
+	RESPONSE_LOAD_GUI_SUCCESS,
+	RESPONSE_UNLOAD_GUI_SUCCESS,
+	RESPONSE_FINISH_ACTIVITY_SUCCESS,
+	RESPONSE_FINISH_ACTIVITY_FAILURE,
+} irr_ResponseCode;
+
+
+typedef enum __IrrIntentAction
+{
+	INTENT_UNKOWN,
+	INTENT_START_ACTIVITY,
+	INTENT_FINLISH_ACTIVITY,
+	INTENT_BIND_SERVICE,
+	INTENT_UNBIND_SERVICE,
+	INTENT_FETCH_DATA,
+	INTENT_GET_ACTIVITY,
+	INTENT_GET_SERVICE,
+	INTENT_LOAD_UI,
+} irr_IntentAction;
+
+typedef enum __LanguageType
+{
+	kLanguageEnglish = 0,
+	kLanguageChinese,
+	kLanguageFrench,
+	kLanguageItalian,
+	kLanguageGerman,
+	kLanguageSpanish,
+	kLanguageRussian,
+	kLanguageKorean,
+	kLanguageJapanese,
+	kLanguageHungarian,
+	kLanguagePortuguese,
+	kLanguageArabic
+} Irr_LanguageType;
+
+
+
+
+#endif	//_IRRENUMDEF_H_

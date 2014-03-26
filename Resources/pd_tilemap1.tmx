@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_grounds32" tilewidth="32" tileheight="32">
+  <image source="dg_grounds32.png" trans="fafafa" width="288" height="608"/>
+ </tileset>
+ <layer name="Layer1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzF0z0KwkAQhuGtt/cCHmKtUgW0SxG2CIh38B72eobc0gRmYfj4dmZDJBYv/qA+2XEyhRCmxh47G6W7/N75oLR7WXpK8aCKG5WNlc9m+C6+rr3nuaw9c+ggy31DzMYzfSTP7Qy3X0pS75z7pdpqj+Jm4iZn5qs3E79l3sX1zsvsWdkzca0dY67O2jXt6WpWJm7r/v9iz2suPs+BX5dnJ1Jtzmw2NdezmZuIm+GRuYNht/roWvd5VC7aV2nLf46u5WfDjmCv3SDLrdneuXPgZz9JeA24V8xjLtv/QVX8k0rPQt9HW+9hFrNxBtr9R1+UFm/h
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="30" height="20">
+  <object name="SpawnPoint" x="320" y="320" width="320" height="128"/>
+  <object x="1056" y="288"/>
+ </objectgroup>
+</map>

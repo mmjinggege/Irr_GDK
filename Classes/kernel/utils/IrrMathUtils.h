@@ -26,6 +26,8 @@ namespace irr_utils
 	
 		static const float Epsilon;
 	
+		static const float SQRT2;
+
 		template<typename T>
 		static T Abs(T val )
 		{
@@ -98,6 +100,9 @@ namespace irr_utils
 		static bool RandomBool();
 
 		static bool FuzzyEquals(float value1, float value2, float epsilon=Epsilon);
+
+		static float IrrCos(float angle);
+		static float IrrSin(float angle);
 	};
 }
 

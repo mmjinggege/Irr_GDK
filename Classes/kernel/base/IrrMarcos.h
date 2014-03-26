@@ -88,9 +88,7 @@ public: virtual const varType& get##funName(void) const { return varName; }
 #define NULL    0
 #endif
 
-#ifndef PI
-#define PI (3.1415926f)
-#endif
+#define irr_cos(angle) cos(angle)
 
 #if defined(_USRDLL)
 #define IRR_DLL     __declspec(dllexport)

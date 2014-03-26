@@ -67,4 +67,14 @@ namespace irr_display
 	{
 		return m_Rect.origin;
 	}
+
+	void IrrNode::updateLocation( float offsetX,float offsetY )
+	{
+		setPosition(m_Rect.origin.X+offsetX, m_Rect.origin.Y+offsetY);
+	}
+
+	void IrrNode::updateLocation( IrrVector2D& postion )
+	{
+		setPosition(m_Rect.origin.X+postion.X, m_Rect.origin.Y+postion.Y);
+	}
 }

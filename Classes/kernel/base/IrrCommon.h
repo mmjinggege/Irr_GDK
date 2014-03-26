@@ -1,63 +1,34 @@
 #ifndef _IRRCOMMON_H_
 #define _IRRCOMMON_H_
 
-typedef enum __IrrObjectType
-{
-	IRR_OBJECT = 0x00,
-	IRR_ACTIVITY,
-	IRR_NET_OBSERVER,
-	IRR_COMMAND,
-	IRR_MESSAGENOTIFY,
-	IRR_SPRITE,
-} Irr_ObjType;
+#include "IrrEnumDef.h"
 
-typedef enum __ResponseCode
+namespace irr_base
 {
-	RESPONSE_UNKOWN,
-	RESPONSE_START_ACTIVITY_SUCCESS,
-	RESPONSE_START_ACTIVITY_FAILURE,
-	RESPONSE_CODE_SUCCESS,
-	RESPONSE_CODE_FAILURE,
-	RESPONSE_BIND_SERVICE_SUCCESS,
-	RESPONSE_BIND_SERVICE_FAILURE,
-	RESPONSE_HAS_BINDED,
-	RESPONSE_GET_ACTIVITY_SUCCESS,
-	RESPONSE_GET_ACTIVITY_FAILURE,
-	RESPONSE_GET_SERVICE,
-	RESPONSE_LOAD_GUI_SUCCESS,
-	RESPONSE_UNLOAD_GUI_SUCCESS,
-	RESPONSE_FINISH_ACTIVITY_SUCCESS,
-	RESPONSE_FINISH_ACTIVITY_FAILURE,
-} irr_ResponseCode;
+	//////////////////////////////////////////////////////////////////////////
+	// 32位标记，值 输入输出
+	class IrrFlagValue
+	{
+	public: 
+		IrrFlagValue(unsigned int flag = 0);
+		virtual void setBit(unsigned int value, bool bSet);
+		virtual void reset(void);
+		virtual bool isBitSet(unsigned int value);
+	protected:
+		unsigned int m_iFlag;//32 bit flag for state using
+	};
 
+	//////////////////////////////////////////////////////////////////////////
+	// 32位标记，索引位 输入输出
+	class IrrFlagIndex : public IrrFlagValue
+	{
+	public:
+		IrrFlagIndex(unsigned int flag = 0);
+		~IrrFlagIndex(void);
+		virtual void setBit(unsigned int index, bool bSet);
+		virtual bool isBitSet(unsigned int index);
+	};
 
-typedef enum __IrrIntentAction
-{
-	INTENT_UNKOWN,
-	INTENT_START_ACTIVITY,
-	INTENT_FINLISH_ACTIVITY,
-	INTENT_BIND_SERVICE,
-	INTENT_UNBIND_SERVICE,
-	INTENT_FETCH_DATA,
-	INTENT_GET_ACTIVITY,
-	INTENT_GET_SERVICE,
-	INTENT_LOAD_UI,
-} irr_IntentAction;
-
-typedef enum __LanguageType
-{
-	kLanguageEnglish = 0,
-	kLanguageChinese,
-	kLanguageFrench,
-	kLanguageItalian,
-	kLanguageGerman,
-	kLanguageSpanish,
-	kLanguageRussian,
-	kLanguageKorean,
-	kLanguageJapanese,
-	kLanguageHungarian,
-	kLanguagePortuguese,
-	kLanguageArabic
-} Irr_LanguageType;
+}
 
 #endif //_IRRCOMMON_H_
