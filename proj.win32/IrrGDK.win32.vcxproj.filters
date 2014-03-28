@@ -170,6 +170,9 @@
     <ClInclude Include="..\Classes\kernel\ui\IrrContainer.h">
       <Filter>Classes\kernel\ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrInterval.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrButton.h">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClInclude>
@@ -194,19 +197,30 @@
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrWindow.h">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\IrrViewport.h">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\kernel\display\IrrNode.h">
       <Filter>Classes\kernel\display</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\kernel\display\IrrSprite.h">
       <Filter>Classes\kernel\display</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\kernel\core\IrrCamera.h" />
-    <ClInclude Include="..\Classes\kernel\core\IrrControll.h" />
-    <ClInclude Include="..\Classes\kernel\core\IrrGraphic.h" />
-    <ClInclude Include="..\Classes\kernel\core\IrrIntent.h" />
-    <ClInclude Include="..\Classes\kernel\core\IrrInterval.h" />
-    <ClInclude Include="..\Classes\kernel\ui\IrrTouchNode.h" />
-    <ClInclude Include="..\Classes\kernel\ui\IrrViewport.h" />
+    <ClInclude Include="..\Classes\kernel\core\IrrCamera.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrControll.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrGraphic.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrIntent.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\kernel\extends\sneaky\SneakyButton.h">
       <Filter>Classes\kernel\extends\sneaky</Filter>
     </ClInclude>
@@ -240,11 +254,23 @@
     <ClInclude Include="..\Classes\sample\CMainLayer.h">
       <Filter>Classes\sample</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\kernel\extends\iso\IrrISO.h">
+      <Filter>Classes\kernel\extends\iso</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrPngLabel.h">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\kernel\extends\iso\IrrISO.h">
-      <Filter>Classes\kernel\extends\iso</Filter>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrRichText.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrScrollView.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\ui\widget\IrrTextFieldTTF.h">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\utils\utf8.h">
+      <Filter>Classes\kernel\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -332,16 +358,24 @@
     <ClCompile Include="..\Classes\kernel\ui\widget\IrrWindow.cpp">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\IrrViewport.cpp">
+      <Filter>Classes\kernel\ui</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\kernel\display\IrrNode.cpp">
       <Filter>Classes\kernel\display</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\display\IrrSprite.cpp">
       <Filter>Classes\kernel\display</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\kernel\core\IrrCamera.cpp" />
-    <ClCompile Include="..\Classes\kernel\core\IrrGraphic.cpp" />
-    <ClCompile Include="..\Classes\kernel\ui\IrrTouchNode.cpp" />
-    <ClCompile Include="..\Classes\kernel\ui\IrrViewport.cpp" />
+    <ClCompile Include="..\Classes\kernel\core\IrrCamera.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrGraphic.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\kernel\extends\sneaky\SneakyButton.cpp">
       <Filter>Classes\kernel\extends\sneaky</Filter>
     </ClCompile>
@@ -372,11 +406,23 @@
     <ClCompile Include="..\Classes\sample\CMainLayer.cpp">
       <Filter>Classes\sample</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\kernel\extends\iso\IrrISO.cpp">
+      <Filter>Classes\kernel\extends\iso</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\widget\IrrPngLabel.cpp">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\kernel\extends\iso\IrrISO.cpp">
-      <Filter>Classes\kernel\extends\iso</Filter>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrRichText.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrScrollView.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\ui\widget\IrrTextFieldTTF.cpp">
+      <Filter>Classes\kernel\ui\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\utils\utf8.cpp">
+      <Filter>Classes\kernel\utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

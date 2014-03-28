@@ -5,6 +5,7 @@ namespace irr_display
 	IrrNode::IrrNode( void )
 	{
 		m_bSwallowsTouches = false;
+		setAnchorPoint(ccp(0.5f,0.5f));
 	}
 
 	IrrNode::~IrrNode( void )

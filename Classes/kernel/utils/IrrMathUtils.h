@@ -12,13 +12,13 @@ namespace irr_utils
 
 		static const float Log2E;
 
-		static const float Pi;
+		static const float PI;
 	
-		static const float PiOver2;
+		static const float PIOver2;
 	
-		static const float PiOver4;
+		static const float PIOver4;
 
-		static const float TwoPi;
+		static const float TwoPI;
 	
 		static const float MaxFloat;
 	
@@ -26,7 +26,7 @@ namespace irr_utils
 	
 		static const float Epsilon;
 	
-		static const float SQRT2;
+		static const double SQRT2;
 
 		template<typename T>
 		static T Abs(T val )
@@ -84,7 +84,9 @@ namespace irr_utils
 		static float ToRadians(float degrees);
 
 		static int RoundToInt(double x);
-	
+
+		static float RoundToFloat(float x);
+
 		static int RandomInt(int maximum);
 
 		static int RandomIntInRange(int min, int max);

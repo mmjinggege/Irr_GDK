@@ -4,7 +4,8 @@ using namespace cocos2d;
 
 #include "IrrButton.h"
 #include "IrrCamera.h"
-
+#include "IrrPngLabel.h"
+#include "IrrTextFieldTTF.h"
 using namespace irr_ui;
 
 
@@ -106,9 +107,23 @@ bool HelloWorld::init()
 		button1->setName(name1);
 		button1->setPosition(300,290);
 		shareCamera->appendToGUI(button1);
-		CCLabelTTF *pLable = CCLabelTTF::create("中国我唉唉和圣殿", "Marker Felt", 30);
-		pLable->setPosition(ccp(200,200));
-		this->addChild(pLable);
+
+		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
+		pPngLabel->setPosition(300,300);
+		pPngLabel->setDimensions(30,300);
+
+		//pPngLabel->setFontSize(18);
+		//pPngLabel->setVerticalTextAlign(kCCVerticalTextAlignmentBottom);
+		pPngLabel->setTextAlign(kCCTextAlignmentCenter);
+		pPngLabel->setTouchable(true);
+		shareCamera->appendToGUI(pPngLabel);
+		
+		//pPngLabel->setDimensions(300,200);
+
+		IrrTextFieldTTF* pLabelTTF = IrrTextFieldTTF::create();
+		pLabelTTF->setString("123123123123123sfds");
+		shareCamera->appendToGUI(pLabelTTF);
+		pLabelTTF->setPosition(200,200);
     } while (0);
 
     return bRet;

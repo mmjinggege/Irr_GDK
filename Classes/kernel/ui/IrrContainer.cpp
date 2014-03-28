@@ -29,7 +29,9 @@ namespace irr_ui
 		widget->setWidgetParent(this);
 		widget->setPosition(pos.X,pos.Y);
 		if(widget->isTouchable())
+		{
 			m_TouchableChilds.push_back(widget);
+		}
 	}
 
 	void IrrContainer::removeWidget( IrrWidget* widget,bool isDel /*= true*/ )
@@ -40,18 +42,30 @@ namespace irr_ui
 			if(*itor == widget)
 			{
 				m_TouchableChilds.erase(itor);
-				if(isDel)
-				{
-					delete *itor;
-				}
-				else
-				{
-					(*itor)->setParent(NULL);
-				}
-				this->removeChild(widget);
 				break;
 			}
 		}
+		widget->setParent(NULL);
+		this->removeChild(widget);
+
+// 		pIrrWidgetItor itor;
+// 		for (itor = m_TouchableChilds.begin();itor!=m_TouchableChilds.end();itor++)
+// 		{
+// 			if(*itor == widget)
+// 			{
+// 				m_TouchableChilds.erase(itor);
+// 				if(isDel)
+// 				{
+// 					delete *itor;
+// 				}
+// 				else
+// 				{
+// 					(*itor)->setParent(NULL);
+// 				}
+// 				this->removeChild(widget);
+// 				break;
+// 			}
+// 		}
 	}
 
 	void IrrContainer::clearAllWidget()

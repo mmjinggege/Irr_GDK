@@ -7,13 +7,12 @@ const char* CMainLayer::MAP_FORMAT_STRING = "Dib%d.png";
 
 CMainLayer::CMainLayer( void )
 {
-	
 }
 
 CMainLayer::~CMainLayer( void )
 {
-
 }
+
 
 bool CMainLayer::init()
 {
@@ -22,7 +21,9 @@ bool CMainLayer::init()
 		return false;
 	}	
 	initMap();
-	IrrISO* iso = new IrrISO(CMainLayer::MAP_COL_NUMBER,CMainLayer::MAP_ROW_NUMBER);
+	IrrISO* iso = new IrrISO(80,40,CMainLayer::MAX_GRID_ROW,CMainLayer::MAX_GRID_COL);
+	iso->setTargetMap(this);
+	this->addChild(iso);
 	return true;
 }
 
@@ -62,7 +63,7 @@ void IMainLayerDelegate::handleMove( IrrLayerEvent& evt )
 {
 	ENTERFUNC();
 	CCLOG("handleMove");
-	CMainLayer* layer = (CMainLayer*)evt.getTarget();
+	IrrNode* layer = evt.getTarget();
 	layer->updateLocation(evt.getDelta());
 	LVFUNC();
 }

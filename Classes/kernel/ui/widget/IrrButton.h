@@ -29,9 +29,7 @@ namespace irr_ui
 		void handleDown(IrrUIEvent& event);
 		void handleUp(IrrUIEvent& event);
 		void handleClick(IrrUIEvent& event);
-
 		void addClickEvent(CCObject* target,Irr_GUI_SEL_ClickEvent selector);
-
 		virtual void setTouchable(bool var);
 	protected:
 		bool init(const char *normalImage  = NULL, const char *selectedImage  = NULL,bool isPlist = false);

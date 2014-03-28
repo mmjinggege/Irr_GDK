@@ -114,7 +114,7 @@ namespace irr_core
 		float getOriginY() const;
 		float getMinX() const;
 		float getMidX() const;
-		float getMax()  const;
+		float getMaxX()  const;
 		float getMinY() const;
 		float getMidY() const;
 		float getMaxY() const;

@@ -43,7 +43,7 @@ namespace irr_display
 		{
 			IrrLayerEvent evt(this,IRR_LAYER_EVENT_DOWN);
 			evt.setDelta(CreateIrrVector2D(pTouch->getDelta().x,pTouch->getDelta().y));
-			evt.setPos(CreateIrrVector2D(pTouch->getLocation().x,pTouch->getLocation().y));
+			evt.setPos(CreateIrrVector2D(pTouch->getLocationInView().x,pTouch->getLocationInView().y));
 			m_pLayerDelegate->handleDown(evt);
 		}
 		return true;
@@ -55,7 +55,7 @@ namespace irr_display
 		{
 			IrrLayerEvent evt(this,IRR_LAYER_EVENT_MOVE);
 			evt.setDelta(CreateIrrVector2D(pTouch->getDelta().x,pTouch->getDelta().y));
-			evt.setPos(CreateIrrVector2D(pTouch->getLocation().x,pTouch->getLocation().y));
+			evt.setPos(CreateIrrVector2D(pTouch->getLocationInView().x,pTouch->getLocationInView().y));
 			m_pLayerDelegate->handleMove(evt);
 		}
 	}
@@ -66,7 +66,7 @@ namespace irr_display
 		{ 
 			IrrLayerEvent evt(this,IRR_LAYER_EVENT_UP);
 			evt.setDelta(CreateIrrVector2D(pTouch->getDelta().x,pTouch->getDelta().y));
-			evt.setPos(CreateIrrVector2D(pTouch->getLocation().x,pTouch->getLocation().y));
+			evt.setPos(CreateIrrVector2D(pTouch->getLocationInView().x,pTouch->getLocationInView().y));
 			m_pLayerDelegate->handleUp(evt);
 		}
 	}

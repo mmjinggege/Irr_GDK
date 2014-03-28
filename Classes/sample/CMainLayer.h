@@ -27,6 +27,8 @@ public:
 	static const int SINGLE_MAP_TILE_WIDTH = 720;
 	static const int SINGLE_MAP_TILE_HEIGHT = 660;
 	static const char* MAP_FORMAT_STRING;
+	static const int MAX_GRID_ROW = 40;
+	static const int MAX_GRID_COL = 40;
 public:
 	CMainLayer(void);
 	~CMainLayer(void);

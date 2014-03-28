@@ -47,11 +47,13 @@ namespace irr_display
 		bool m_bSwallowsTouches;
 	};
 
+	//////////////////////////////////////////////////////////////////////////
 	typedef void (CCObject::*Irr_GUI_SEL_ClickEvent)(CCObject*);
 #define irr_gui_clickselector(_SELECTOR)  (Irr_GUI_SEL_ClickEvent)(&_SELECTOR)
 
 	typedef void (CCObject::*Irr_GUI_SEL_ClickToggleEvent)(CCObject*,int index);
 #define irr_gui_clickToggleselector(_SELECTOR)  (Irr_GUI_SEL_ClickToggleEvent)(&_SELECTOR)
+	//////////////////////////////////////////////////////////////////////////
 }
 
 #endif	//_IRRTOUCHNODE_H_

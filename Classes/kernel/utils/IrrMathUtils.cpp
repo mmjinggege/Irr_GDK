@@ -10,14 +10,14 @@ namespace irr_utils
 	const float IrrMathUtils::E = 2.718282f;
 	const float IrrMathUtils::Log10E = 0.4342945f;
 	const float IrrMathUtils::Log2E = 1.442695f;
-	const float IrrMathUtils::Pi = 3.141593f;
-	const float IrrMathUtils::PiOver2 = 1.570796f;
-	const float IrrMathUtils::PiOver4 = 0.7853982f;
-	const float IrrMathUtils::TwoPi = 6.283185f;
+	const float IrrMathUtils::PI = 3.141593f;
+	const float IrrMathUtils::PIOver2 = 1.570796f;
+	const float IrrMathUtils::PIOver4 = 0.7853982f;
+	const float IrrMathUtils::TwoPI = 6.283185f;
 	const float IrrMathUtils::MaxFloat = 3.402823E+38f;
 	const float IrrMathUtils::MinFloat = -3.402823E+38f;
 	const float IrrMathUtils::Epsilon = 0.000001f;
-	const float IrrMathUtils::SQRT2  = 1.4142135623730951;
+	const double IrrMathUtils::SQRT2  = 1.4142135623730951;
 
 	
 	float IrrMathUtils::ToDegrees( float radians )
@@ -34,7 +34,11 @@ namespace irr_utils
 	{
 		return ((int)(floor(x+0.5)));
 	}
-
+	
+	float IrrMathUtils::RoundToFloat( float x )
+	{
+		return (x > 0.0) ? floor(x + 0.5) : ceil(x - 0.5);
+	}
 	int IrrMathUtils::RandomInt( int maximum )
 	{
 		static bool firstTime = true;
@@ -104,5 +108,6 @@ namespace irr_utils
 	{
 		return sin(angle);
 	}
+
 
 }
