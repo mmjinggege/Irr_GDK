@@ -113,7 +113,7 @@ namespace irr_ui
 
 	void IrrButton::setTouchable( bool var )
 	{
-		m_bIsTouchable = var;
+		IrrWidget::setTouchable(var);
 		if ( m_pNormalWidget == NULL || m_pSelectWidget == NULL )
 			return;
 		if(!m_bIsTouchable)

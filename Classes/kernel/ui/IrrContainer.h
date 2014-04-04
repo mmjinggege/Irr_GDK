@@ -38,6 +38,7 @@ namespace irr_ui
 	protected:
 		IrrWidgetTouchableList m_TouchableChilds;
 		IrrWidget* m_pCurrentSelWidget;
+		bool m_bIsMoved;
 	};
 }
 

@@ -105,25 +105,26 @@ bool HelloWorld::init()
 		button1->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		std::string name1 = "btn 1";
 		button1->setName(name1);
-		button1->setPosition(300,290);
-		shareCamera->appendToGUI(button1);
+		button1->setPosition(30,30);
+		button->addWidget(button1);
+		//shareCamera->appendToGUI(button1);
 
-		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
-		pPngLabel->setPosition(300,300);
-		pPngLabel->setDimensions(30,300);
-
-		//pPngLabel->setFontSize(18);
-		//pPngLabel->setVerticalTextAlign(kCCVerticalTextAlignmentBottom);
-		pPngLabel->setTextAlign(kCCTextAlignmentCenter);
-		pPngLabel->setTouchable(true);
-		shareCamera->appendToGUI(pPngLabel);
+// 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
+// 		pPngLabel->setPosition(300,300);
+// 		pPngLabel->setDimensions(30,300);
+// 
+// 		//pPngLabel->setFontSize(18);
+// 		//pPngLabel->setVerticalTextAlign(kCCVerticalTextAlignmentBottom);
+// 		pPngLabel->setTextAlign(kCCTextAlignmentCenter);
+// 		pPngLabel->setTouchable(true);
+// 		shareCamera->appendToGUI(pPngLabel);
 		
 		//pPngLabel->setDimensions(300,200);
 
-		IrrTextFieldTTF* pLabelTTF = IrrTextFieldTTF::create();
-		pLabelTTF->setString("123123123123123sfds");
-		shareCamera->appendToGUI(pLabelTTF);
-		pLabelTTF->setPosition(200,200);
+// 		IrrTextFieldTTF* pLabelTTF = IrrTextFieldTTF::create();
+// 		pLabelTTF->setString("123123123123123sfds");
+// 		shareCamera->appendToGUI(pLabelTTF);
+// 		pLabelTTF->setPosition(200,200);
     } while (0);
 
     return bRet;

@@ -1,7 +1,7 @@
 #ifndef _IRR_SCROLLVIEW_H_
 #define _IRR_SCROLLVIEW_H_
-using namespace irr_display;
 #include "IrrContainer.h"
+using namespace irr_display;
 
 namespace irr_ui
 {

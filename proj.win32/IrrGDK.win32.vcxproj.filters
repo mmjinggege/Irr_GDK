@@ -59,6 +59,9 @@
     <Filter Include="Classes\kernel\extends\iso">
       <UniqueIdentifier>{b035fbdf-3c53-457e-808c-cf844a2791ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\kernel\algorithm">
+      <UniqueIdentifier>{4cc7352d-2cf6-4df8-a2f2-61f314a80307}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\IrrGDK.ico">
@@ -257,13 +260,13 @@
     <ClInclude Include="..\Classes\kernel\extends\iso\IrrISO.h">
       <Filter>Classes\kernel\extends\iso</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\kernel\algorithm\IrrPathFinder.h">
+      <Filter>Classes\kernel\algorithm</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrPngLabel.h">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrRichText.h">
-      <Filter>Classes\kernel\ui\widget</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\kernel\ui\widget\IrrScrollView.h">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\kernel\ui\widget\IrrTextFieldTTF.h">
@@ -271,6 +274,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\kernel\utils\utf8.h">
       <Filter>Classes\kernel\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\core\IrrFSM.h">
+      <Filter>Classes\kernel\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\manager\IrrStateManager.h">
+      <Filter>Classes\kernel\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sample\CHeroState.h">
+      <Filter>Classes\sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\kernel\event\IrrStateEvent.h">
+      <Filter>Classes\kernel\event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -409,13 +424,13 @@
     <ClCompile Include="..\Classes\kernel\extends\iso\IrrISO.cpp">
       <Filter>Classes\kernel\extends\iso</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\kernel\algorithm\IrrPathFinder.cpp">
+      <Filter>Classes\kernel\algorithm</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\widget\IrrPngLabel.cpp">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\widget\IrrRichText.cpp">
-      <Filter>Classes\kernel\ui\widget</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\kernel\ui\widget\IrrScrollView.cpp">
       <Filter>Classes\kernel\ui\widget</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\ui\widget\IrrTextFieldTTF.cpp">
@@ -423,6 +438,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\kernel\utils\utf8.cpp">
       <Filter>Classes\kernel\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\kernel\core\IrrFSM.cpp">
+      <Filter>Classes\kernel\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sample\CHeroState.cpp">
+      <Filter>Classes\sample</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

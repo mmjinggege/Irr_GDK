@@ -35,9 +35,15 @@ namespace irr_ui
 		void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 //////////////////////////////////////////////////////////////////////////
 		virtual void DispatchUIEvent(IrrUIEvent& event); 
+//////////////////////////////////////////////////////////////////////////
+		void addTouchAbleChild(IrrWidget* pWight);
+		void removeTouchAbleChild(IrrWidget* pWight);
+		void clearTouchAbleChildren();
+		std::vector<IrrWidget*> getTouchAbleChildren();
 	private:
 		IrrGraphic* m_pGraphic;
 		IrrVector2D m_DownPos;
+		std::vector<IrrWidget*> m_vecTouchAbleChildern;
 	};
 }
 

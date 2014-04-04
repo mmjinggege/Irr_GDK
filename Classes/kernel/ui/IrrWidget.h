@@ -69,6 +69,7 @@ namespace irr_ui
 		IrrColor m_backgroundColor;
 
 		bool m_bIsTouchable;
+		bool m_bSwallowsTouches;
 	};
 }
 

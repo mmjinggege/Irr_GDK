@@ -68,7 +68,7 @@ void irr_ui::IrrScrollView::setScrollViewType( CCScrollViewType type )
 
 irr_ui::CCScrollViewType irr_ui::IrrScrollView::getScrollViewType()
 {
-
+	return m_type;
 }
 
 void irr_ui::IrrScrollView::setClippingToBounds( bool var )
@@ -78,7 +78,7 @@ void irr_ui::IrrScrollView::setClippingToBounds( bool var )
 
 bool irr_ui::IrrScrollView::isClippingToBounds()
 {
-
+	return m_bClippingToBounds;
 }
 
 void irr_ui::IrrScrollView::setBounceable( bool var )
@@ -88,6 +88,6 @@ void irr_ui::IrrScrollView::setBounceable( bool var )
 
 bool irr_ui::IrrScrollView::getBounceable()
 {
-
+	return m_bBounceable;
 }
 

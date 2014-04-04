@@ -6,6 +6,7 @@ namespace irr_ui
 	
 	IrrContainer::IrrContainer( void )
 		:m_pCurrentSelWidget(NULL)
+		,m_bIsMoved(false)
 	{
 	}
 
@@ -180,15 +181,28 @@ namespace irr_ui
 				rItor++;
 			}
 
-			if(pTemp == m_pCurrentSelWidget)
+			IrrVector2D ptTemp = event.getPos();
+			m_pCurrentSelWidget->handleUp(event);
+
+			if(pTemp == m_pCurrentSelWidget )
 			{
-				IrrVector2D ptTemp = event.getPos();
-				//ptTemp = pTemp->convertToNodeSpace(ptTemp);
-				m_pCurrentSelWidget->handleUp(event);
-				event.setHandled(false);
-				event.setEvtType(IRR_UI_EVENT_CLICK);
-				m_pCurrentSelWidget->handleClick(event);
+// 				IrrVector2D ptTemp = event.getPos();
+// 				m_pCurrentSelWidget->handleUp(event);
+
+				if( !m_bIsMoved )
+				{
+					event.setHandled(false);
+					event.setEvtType(IRR_UI_EVENT_CLICK);
+					m_pCurrentSelWidget->handleClick(event);
+				}
 			}
+// 			else if(m_bIsMoved)
+// 			{
+// 				IrrVector2D ptTemp = event.getPos();
+// 				m_pCurrentSelWidget->handleUp(event);
+// 			}
+
+			m_bIsMoved = false;
 			m_pCurrentSelWidget = NULL;
 		}
 	}
@@ -208,6 +222,7 @@ namespace irr_ui
 
 	void IrrContainer::handleMove( IrrUIEvent& event )
 	{
+		m_bIsMoved = true;
 		if (m_pCurrentSelWidget)
 		{
 			m_pCurrentSelWidget->handleMove(event);
