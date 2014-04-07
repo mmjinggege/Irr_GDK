@@ -4,7 +4,7 @@
 #include "IrrMarcos.h"
 #include "IrrContainer.h"
 #include "IrrUIEvent.h"
-
+#include "IrrWidget.h"
 namespace irr_core
 {
 	class IrrGraphic;
@@ -15,6 +15,16 @@ using namespace irr_event;
 
 namespace irr_ui
 {	
+	typedef std::list<IrrWidget*> IrrWidgetTouchableList;
+	typedef IrrWidgetTouchableList::iterator pIrrWidgetItor;	
+	typedef IrrWidgetTouchableList::reverse_iterator pIrrWidgetReverseItor;
+
+	inline bool sortListByRootDepth( IrrWidget* pWightLeft,  IrrWidget* pWightRight)
+	{
+		return pWightLeft->getRootDepth() > pWightRight->getRootDepth();
+	}
+
+
 	class IrrGui : public IrrContainer,public CCTouchDelegate
 	{
 	public:
@@ -33,18 +43,37 @@ namespace irr_ui
 		void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 		void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 		void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+		//////////////////////////////////////////////////////////////////////////
+		virtual void handleDown( IrrUIEvent& event );
+		virtual void handleUp( IrrUIEvent& event );
+		virtual void handleClick( IrrUIEvent& event );
+		virtual void handleMoveIn( IrrUIEvent& event );
+		virtual void handleMove( IrrUIEvent& event );
+		virtual void handleMoveOut( IrrUIEvent& event );
 //////////////////////////////////////////////////////////////////////////
 		virtual void DispatchUIEvent(IrrUIEvent& event); 
 //////////////////////////////////////////////////////////////////////////
-		void addTouchAbleChild(IrrWidget* pWight);
-		void removeTouchAbleChild(IrrWidget* pWight);
+		void addTouchAbleWight(IrrWidget* pWight);
+		void removeTouchAbleWight(IrrWidget* pWight);
 		void clearTouchAbleChildren();
-		std::vector<IrrWidget*> getTouchAbleChildren();
+		IrrWidgetTouchableList& getTouchAbleChildren();
+//////////////////////////////////////////////////////////////////////////
+		void selectEventWights();
+	private:
+		IrrWidget* checkWight();
 	private:
 		IrrGraphic* m_pGraphic;
 		IrrVector2D m_DownPos;
-		std::vector<IrrWidget*> m_vecTouchAbleChildern;
+
+		IrrWidgetTouchableList m_TouchableWights;
+		IrrWidget* m_pCurrentSelWidget;
+		bool m_bIsMoved;
+
+		IrrWidgetTouchableList m_curTouchWights;
+
 	};
+
+
 }
 
 #endif	//_IRRGUI_H_

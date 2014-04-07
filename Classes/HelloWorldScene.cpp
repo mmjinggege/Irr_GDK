@@ -89,15 +89,15 @@ bool HelloWorld::init()
         // Add the sprite to HelloWorld layer as a child layer.
         this->addChild(pSprite, 0);
 
-        bRet = true;
-//////////////////////////////////////////////////////////////////////////
+         bRet = true;
+// //////////////////////////////////////////////////////////////////////////
 		shareCamera->setSceneSize(size.width,size.height);
 		this->addChild((CCNode*)(shareCamera->getGUI()));
-		
+	
 		IrrButton* button = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
 		button->setPosition(300,300);
 		button->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
-		shareCamera->appendToGUI(button);
+	//	shareCamera->appendToGUI(button);
 		std::string name = "btn 0";
 		button->setName(name);
 
@@ -105,10 +105,16 @@ bool HelloWorld::init()
 		button1->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		std::string name1 = "btn 1";
 		button1->setName(name1);
-		button1->setPosition(30,30);
-		button->addWidget(button1);
-		//shareCamera->appendToGUI(button1);
+		button1->setPosition(300,310);
+		shareCamera->appendToGUI(button1);
 
+		IrrButton* button2 = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+		button2->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+		std::string name2 = "btn 2";
+		button2->setName(name2);
+		//button2->setPosition(310,300);
+		button1->addWidget(button2);
+		//shareCamera->appendToGUI(button2);
 // 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
 // 		pPngLabel->setPosition(300,300);
 // 		pPngLabel->setDimensions(30,300);
@@ -121,10 +127,16 @@ bool HelloWorld::init()
 		
 		//pPngLabel->setDimensions(300,200);
 
-// 		IrrTextFieldTTF* pLabelTTF = IrrTextFieldTTF::create();
-// 		pLabelTTF->setString("123123123123123sfds");
-// 		shareCamera->appendToGUI(pLabelTTF);
-// 		pLabelTTF->setPosition(200,200);
+		IrrTextFieldTTF* pLabelTTF = IrrTextFieldTTF::create();
+		pLabelTTF->setString("123123123123123sfds");
+		shareCamera->appendToGUI(pLabelTTF);
+		pLabelTTF->setPosition(200,200);
+
+		CCNode* pChild1 = CCNode::create();
+		CCNode* pChild2 = CCNode::create();
+		this->addChild(pChild1);
+		this->addChild(pChild2);
+
     } while (0);
 
     return bRet;

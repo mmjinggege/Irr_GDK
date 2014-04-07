@@ -4,6 +4,7 @@ namespace irr_display
 {
 	IrrNode::IrrNode( void )
 	{
+		m_iRootDepth = 0;
 		m_bSwallowsTouches = false;
 		setAnchorPoint(ccp(0.5f,0.5f));
 	}

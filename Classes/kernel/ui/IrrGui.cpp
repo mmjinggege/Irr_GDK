@@ -1,6 +1,6 @@
 #include "IrrGui.h"
 #include "IrrGraphic.h"
-
+#include "IrrCamera.h"
 using namespace irr_ui;
 
 namespace irr_ui
@@ -8,6 +8,7 @@ namespace irr_ui
 
 	IrrGui::IrrGui( IrrSize size )
 	{
+		m_pCurrentSelWidget = NULL;
 		m_Rect.size = size;
 		m_pGraphic = NULL;
 	}
@@ -111,7 +112,10 @@ namespace irr_ui
 
 	void IrrGui::onEnter()
 	{
-		 CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1, true);
+		//////////////////////////////////////////////////////////////////////////
+		setRootDepth(0);
+		//////////////////////////////////////////////////////////////////////////
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1, true);
 		CCNode::onEnter();
 	}
 
@@ -133,5 +137,229 @@ namespace irr_ui
 		m_pGraphic->popClipArea();	
 		m_pGraphic->endDraw();
 	}
+
+
+
+// 	void IrrGui::handleDown( IrrUIEvent& event )
+// 	{
+// 		if(this->getRect().containsVector2D(event.getPos()))
+// 		{
+// 		 	pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+// 		 	IrrWidget* pTemp = NULL;
+// 		 	while(rItor != m_TouchableWights.rend())
+// 		 	{
+// 		 		pTemp = *rItor;
+// 		 		IrrVector2D ptTemp = event.getPos();
+// 		 		IrrRect rect = pTemp->getRect();
+// 		 		if(shareCamera->checkTouchPosInRectAtAnchor(rect,ptTemp,CreateIrrVector2D(0.5,0.5)))
+// 		 		{
+// 		 			event.setPos(ptTemp);
+// 		 			pTemp->handleDown(event);
+// 		 			if(event.isHandled())
+// 		 			{
+// 		 				m_pCurrentSelWidget = pTemp;
+// 		 				break;
+// 		 			}
+// 		 		}
+// 		 		rItor++;
+// 		 	}
+// 		}
+// 	}
+// 
+// 	void IrrGui::handleUp( IrrUIEvent& event )
+// 	{
+// 		if(m_pCurrentSelWidget)
+// 		{
+// 		 	pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+// 		 	IrrWidget* pTemp = NULL;
+// 		 	while(rItor !=m_TouchableWights.rend())
+// 		 	{
+// 		 		pTemp = *rItor;
+// 		 		IrrVector2D ptTemp = event.getPos();
+// 		 		IrrRect rect = pTemp->getRect();
+// 		 		if(shareCamera->checkTouchPosInRectAtAnchor(rect,ptTemp,CreateIrrVector2D(0.5,0.5)))
+// 		 		{
+// 		 			break;
+// 		 		}
+// 		 		rItor++;
+// 		 	}
+// 		 
+// 		 	IrrVector2D ptTemp = event.getPos();
+// 		 	m_pCurrentSelWidget->handleUp(event);
+// 		 
+// 		 	if(pTemp == m_pCurrentSelWidget )
+// 		 	{
+// 		 		if( !m_bIsMoved )
+// 		 		{
+// 		 			event.setHandled(false);
+// 		 			event.setEvtType(IRR_UI_EVENT_CLICK);
+// 		 			m_pCurrentSelWidget->handleClick(event);
+// 		 		}
+// 		 	}
+// 		 
+// 		 	m_bIsMoved = false;
+// 		 	m_pCurrentSelWidget = NULL;
+// 		}
+// 	}
+// 
+// 	void IrrGui::handleClick( IrrUIEvent& event )
+// 	{
+// 		if (m_pCurrentSelWidget)
+// 		{
+// 			m_pCurrentSelWidget->handleClick(event);
+// 		}
+// 	}
+	void IrrGui::selectEventWights()
+	{
+		m_curTouchWights.clear();
+
+	}
+
+
+	IrrWidget* IrrGui::checkWight()
+	{
+		m_curTouchWights.sort(sortListByRootDepth);
+		pIrrWidgetReverseItor rItor = m_curTouchWights.rbegin();
+		IrrWidget* pTemp = NULL;
+		while(rItor != m_curTouchWights.rend())
+		{
+
+			rItor++;
+		}
+		return NULL;
+	}
+
+
+	void IrrGui::handleDown( IrrUIEvent& event )
+	{
+		if(this->getRect().containsVector2D(event.getPos()))
+		{
+			m_curTouchWights.clear();
+			pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+			IrrWidget* pTemp = NULL;
+			while(rItor != m_TouchableWights.rend())
+			{
+				pTemp = *rItor;
+				IrrVector2D ptTemp = event.getPos();
+				IrrRect rect = pTemp->getRect();
+
+				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpace(ptTemp);
+
+				//if(shareCamera->checkTouchPosInRectAtAnchor(rect,localVect2D,CreateIrrVector2D(0.5,0.5)))
+				if (rect.containsVector2D(localVect2D))
+				{
+					
+					m_curTouchWights.push_back(pTemp);
+// 					event.setPos(ptTemp);
+// 					pTemp->handleDown(event);
+// 					if(event.isHandled())
+// 					{
+// 						m_pCurrentSelWidget = pTemp;
+// 						break;
+// 					}
+				}
+				rItor++;
+			}
+
+			checkWight();
+		}
+	}
+
+	void IrrGui::handleUp( IrrUIEvent& event )
+	{
+		if(m_pCurrentSelWidget)
+		{
+			pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+			IrrWidget* pTemp = NULL;
+			while(rItor !=m_TouchableWights.rend())
+			{
+				pTemp = *rItor;
+				IrrVector2D ptTemp = event.getPos();
+				IrrRect rect = pTemp->getRect();
+				if(shareCamera->checkTouchPosInRectAtAnchor(rect,ptTemp,CreateIrrVector2D(0.5,0.5)))
+				{
+					break;
+				}
+				rItor++;
+			}
+
+			IrrVector2D ptTemp = event.getPos();
+
+			if (m_pCurrentSelWidget)
+			{
+				m_pCurrentSelWidget->handleUp(event);
+
+			}
+
+			if(pTemp == m_pCurrentSelWidget )
+			{
+				if( !m_bIsMoved )
+				{
+					event.setHandled(false);
+					event.setEvtType(IRR_UI_EVENT_CLICK);
+					m_pCurrentSelWidget->handleClick(event);
+				}
+			}
+
+			m_bIsMoved = false;
+			m_pCurrentSelWidget = NULL;
+		}
+	}
+
+	void IrrGui::handleClick( IrrUIEvent& event )
+	{
+		if (m_pCurrentSelWidget)
+		{
+			m_pCurrentSelWidget->handleClick(event);
+		}
+	}
+	void IrrGui::handleMoveIn( IrrUIEvent& event )
+	{
+
+	}
+
+	void IrrGui::handleMove( IrrUIEvent& event )
+	{
+ 		m_bIsMoved = true;
+ 		if (m_pCurrentSelWidget)
+ 		{
+ 			m_pCurrentSelWidget->handleMove(event);
+ 		}
+	}
+
+	void IrrGui::handleMoveOut( IrrUIEvent& event )
+	{
+
+	}
+
+	void IrrGui::addTouchAbleWight( IrrWidget* pWight )
+	{
+		m_TouchableWights.push_back(pWight);
+	}
+
+	void IrrGui::removeTouchAbleWight( IrrWidget* pWight )
+	{
+		pIrrWidgetItor itor;
+		for (itor = m_TouchableWights.begin();itor!=m_TouchableWights.end();itor++)
+		{
+			if(*itor == pWight)
+			{
+				m_TouchableWights.erase(itor);
+				break;
+			}
+		}
+	}
+
+	void IrrGui::clearTouchAbleChildren()
+	{
+		m_TouchableWights.clear();
+	}
+
+	irr_ui::IrrWidgetTouchableList& IrrGui::getTouchAbleChildren()
+	{
+		return m_TouchableWights;
+	}
+
+
 
 }

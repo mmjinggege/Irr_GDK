@@ -23,9 +23,12 @@ namespace irr_ui
 
 	IrrVector2D IrrWidget::convertToNodeSpace( const IrrVector2D& pt )
 	{
+		CCPoint point = CCNode::convertToNodeSpace(ccp(pt.X,pt.Y));	
 		IrrVector2D ret = pt;
-		ret.X -= m_Rect.origin.X;
-		ret.Y -= m_Rect.origin.Y;
+// 		ret.X -= m_Rect.origin.X;
+// 		ret.Y -= m_Rect.origin.Y;
+		ret.X = point.x;
+		ret.Y = point.y;
 		return ret;
 	}
 		

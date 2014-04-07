@@ -41,5 +41,5 @@ namespace irr_core
 	};
 }
 #define shareCamera IrrCamera::getInstance()
-
+#define shareGui IrrCamera::getInstance()->getGUI()
 #endif	//_IRRCAMERA_H_
