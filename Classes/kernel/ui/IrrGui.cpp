@@ -27,7 +27,7 @@ namespace irr_ui
 	bool IrrGui::ccTouchBegan( CCTouch *pTouch, CCEvent *pEvent )
 	{
 		bool ret = false;
-		CCPoint pt = pTouch->getLocationInView();
+		CCPoint pt = pTouch->getLocation();
 		IrrVector2D touchLocation;
 		touchLocation.setVector2D(pt.x,pt.y);
 		touchLocation = this->convertToNodeSpace(touchLocation);
@@ -244,7 +244,8 @@ namespace irr_ui
 				IrrRect rect = pTemp->getRect();
 
 				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpace(ptTemp);
-
+				rect.origin.X -= pTemp->getRect().size.width * 0.5f;
+				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
 				//if(shareCamera->checkTouchPosInRectAtAnchor(rect,localVect2D,CreateIrrVector2D(0.5,0.5)))
 				if (rect.containsVector2D(localVect2D))
 				{
