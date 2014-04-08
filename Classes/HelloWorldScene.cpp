@@ -88,16 +88,9 @@ bool HelloWorld::init()
 
         // Add the sprite to HelloWorld layer as a child layer.
         this->addChild(pSprite, 0);
-<<<<<<< HEAD
 
          bRet = true;
-// //////////////////////////////////////////////////////////////////////////
-=======
-		 
-        bRet = true;
-		bRet = true;
-//////////////////////////////////////////////////////////////////////////
->>>>>>> a3b7a3c37ef805fa1138aae12cc1d400d1208495
+
 		shareCamera->setSceneSize(size.width,size.height);
 		this->addChild((CCNode*)(shareCamera->getGUI()));
 	
