@@ -88,14 +88,21 @@ bool HelloWorld::init()
 
         // Add the sprite to HelloWorld layer as a child layer.
         this->addChild(pSprite, 0);
+<<<<<<< HEAD
 
          bRet = true;
 // //////////////////////////////////////////////////////////////////////////
+=======
+		 
+        bRet = true;
+		bRet = true;
+//////////////////////////////////////////////////////////////////////////
+>>>>>>> a3b7a3c37ef805fa1138aae12cc1d400d1208495
 		shareCamera->setSceneSize(size.width,size.height);
 		this->addChild((CCNode*)(shareCamera->getGUI()));
 	
 		IrrButton* button = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
-		button->setPosition(300,300);
+		button->setPosition(300,100);
 		button->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 	//	shareCamera->appendToGUI(button);
 		std::string name = "btn 0";
