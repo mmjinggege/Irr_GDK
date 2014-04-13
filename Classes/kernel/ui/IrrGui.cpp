@@ -18,6 +18,7 @@ namespace irr_ui
 		m_Rect.size.setSize(width,height);
 		m_pGraphic = IrrGraphic::getInstance();
 		m_pGraphic->setGraphicSize(width,height);
+		m_pCurrentSelWidget = NULL;
 	}
 
 	IrrGui::~IrrGui( void )
@@ -58,7 +59,8 @@ namespace irr_ui
 
 	void IrrGui::ccTouchEnded( CCTouch *pTouch, CCEvent *pEvent )
 	{
-		CCPoint ptCococs2dx = pTouch->getLocationInView();
+	//	CCPoint ptCococs2dx = pTouch->getLocationInView();
+		CCPoint ptCococs2dx = pTouch->getLocation();
 		IrrVector2D  touchLocation;
 		touchLocation.setVector2D(ptCococs2dx.x,ptCococs2dx.y);
 		touchLocation = this->convertToNodeSpace(touchLocation);
@@ -212,23 +214,151 @@ namespace irr_ui
 	void IrrGui::selectEventWights()
 	{
 		m_curTouchWights.clear();
-
 	}
 
 
-	IrrWidget* IrrGui::checkWight()
+// 	IrrWidget* IrrGui::checkWight()
+// 	{
+// 		m_curTouchWights.sort(sortListByRootDepth);
+// 		pIrrWidgetReverseItor rItor = m_curTouchWights.rbegin();
+// 		IrrWidget* pTemp = NULL;
+// 		while(rItor != m_curTouchWights.rend())
+// 		{
+// 			pTemp = *rItor;
+// 			rItor++;
+// 		}
+// 		return NULL;
+// 	}
+
+	IrrWidget* IrrGui::checkWidget( IrrWidget* pLeft, IrrWidget* pRight )
 	{
-		m_curTouchWights.sort(sortListByRootDepth);
-		pIrrWidgetReverseItor rItor = m_curTouchWights.rbegin();
-		IrrWidget* pTemp = NULL;
-		while(rItor != m_curTouchWights.rend())
+		if (pLeft == NULL && pRight == NULL)
 		{
-
-			rItor++;
+			return NULL;
 		}
-		return NULL;
+	
+		if (pLeft == NULL)
+		{
+			return pRight;
+		}
+
+		if (pRight == NULL)
+		{
+			return pLeft;
+		}
+
+		if (pLeft == pRight)
+		{
+			return pLeft;
+		}
+
+		int difRootDepth = pLeft->getRootDepth() - pRight->getRootDepth();
+		IrrWidget* pLeftParent = pLeft->getWidgetParent();
+		IrrWidget* pRightParent = pRight->getWidgetParent();
+
+		IrrWidget* pTmpLeft = NULL;
+		IrrWidget* pTmpRight = NULL;
+
+		if (difRootDepth > 0)
+		{
+			for(int i = 0; i < difRootDepth; i++)
+			{
+				pTmpLeft = pLeftParent;
+				pLeftParent = pLeftParent->getWidgetParent();
+			}
+		}else if(difRootDepth < 0)
+		{
+			int absDif = tabs(difRootDepth);
+			for(int i = 0; i < absDif; i++)
+			{
+				pTmpRight = pRightParent;
+				pRightParent = pRightParent->getWidgetParent();
+			}
+		}
+
+		while( pLeftParent != pRightParent )
+		{
+			pTmpLeft = pLeftParent;
+			pTmpRight = pRightParent;
+			pLeftParent = pLeftParent->getWidgetParent();
+			pRightParent = pRightParent->getWidgetParent();
+		}
+
+		if (pTmpLeft == NULL && pTmpRight == NULL)
+		{
+			if ( pLeft->getZOrder() == pRight->getZOrder())
+			{
+				if (pLeft->getOrderOfArrival() > pRight->getOrderOfArrival())
+				{
+					return pLeft;
+				}
+			}
+			else if ( pLeft->getZOrder() > pRight->getZOrder())
+			{
+				return pLeft;
+			}
+
+			return pRight;
+		}
+
+		if (pTmpLeft == NULL)
+		{
+			return pRight;
+		}
+		else if(pTmpRight == NULL)
+		{
+			return pLeft;
+		}
+		
+		if ( pTmpLeft->getZOrder() == pTmpRight->getZOrder())
+		{
+			if (pTmpLeft->getOrderOfArrival() > pTmpRight->getOrderOfArrival())
+			{
+				return pLeft;
+			}
+		}
+		else if ( pTmpLeft->getZOrder() > pTmpRight->getZOrder())
+		{
+			return pLeft;
+		}
+
+		return pRight;
 	}
 
+	IrrWidget* IrrGui::selectCurWidget()
+	{
+		if (m_curTouchWights.size() == 0)
+		{
+			return NULL;
+		}
+
+		if (m_curTouchWights.size() == 1)
+		{
+			IrrWidget* pWigdet = m_curTouchWights.front();
+			m_curTouchWights.pop_front();
+			return pWigdet;
+		}
+
+		m_curTouchWights.sort(sortListByRootDepth);
+
+		IrrWidget* pTmp = NULL;
+
+		IrrWidget* pLeft = m_curTouchWights.front();
+		m_curTouchWights.pop_front();
+		IrrWidget* pRight = m_curTouchWights.front();;
+		m_curTouchWights.pop_front();
+
+		pTmp = checkWidget(pLeft,pRight);
+
+		while(!m_curTouchWights.empty())
+		{
+			IrrWidget* pLeft = m_curTouchWights.front();
+			m_curTouchWights.pop_front();
+			pTmp = checkWidget(pLeft,pTmp);
+		}
+
+		return pTmp;
+	}
 
 	void IrrGui::handleDown( IrrUIEvent& event )
 	{
@@ -243,26 +373,24 @@ namespace irr_ui
 				IrrVector2D ptTemp = event.getPos();
 				IrrRect rect = pTemp->getRect();
 
-				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpace(ptTemp);
-				rect.origin.X -= pTemp->getRect().size.width * 0.5f;
-				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
-				//if(shareCamera->checkTouchPosInRectAtAnchor(rect,localVect2D,CreateIrrVector2D(0.5,0.5)))
+				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpaceAR(ptTemp);
+				rect.origin.X -= pTemp->getWidgetParent()->getRect().size.width * 0.5f;
+				rect.origin.Y -= pTemp->getWidgetParent()->getRect().size.height * 0.5f;
 				if (rect.containsVector2D(localVect2D))
 				{
-					
 					m_curTouchWights.push_back(pTemp);
-// 					event.setPos(ptTemp);
-// 					pTemp->handleDown(event);
-// 					if(event.isHandled())
-// 					{
-// 						m_pCurrentSelWidget = pTemp;
-// 						break;
-// 					}
 				}
 				rItor++;
 			}
 
-			checkWight();
+			//CCLOG("touch down widget size:%d",m_curTouchWights.size());
+
+			m_pCurrentSelWidget = selectCurWidget();
+
+			if (m_pCurrentSelWidget)
+			{
+				m_pCurrentSelWidget->handleDown(event);
+			}
 		}
 	}
 
@@ -270,26 +398,34 @@ namespace irr_ui
 	{
 		if(m_pCurrentSelWidget)
 		{
+			m_curTouchWights.clear();
+
 			pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
 			IrrWidget* pTemp = NULL;
-			while(rItor !=m_TouchableWights.rend())
+			while(rItor != m_TouchableWights.rend())
 			{
 				pTemp = *rItor;
 				IrrVector2D ptTemp = event.getPos();
 				IrrRect rect = pTemp->getRect();
-				if(shareCamera->checkTouchPosInRectAtAnchor(rect,ptTemp,CreateIrrVector2D(0.5,0.5)))
+
+				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpaceAR(ptTemp);
+				rect.origin.X -= pTemp->getWidgetParent()->getRect().size.width * 0.5f;
+				rect.origin.Y -= pTemp->getWidgetParent()->getRect().size.height * 0.5f;
+				if (rect.containsVector2D(localVect2D))
 				{
-					break;
+					m_curTouchWights.push_back(pTemp);
 				}
 				rItor++;
 			}
 
-			IrrVector2D ptTemp = event.getPos();
+			//CCLOG("touch widget up size:%d",m_curTouchWights.size());
+			pTemp = selectCurWidget();
+
+			//CCLOG("click up:tmpname = [%s] curname = [%s]",pTemp->getName().c_str(),m_pCurrentSelWidget->getName().c_str());
 
 			if (m_pCurrentSelWidget)
 			{
 				m_pCurrentSelWidget->handleUp(event);
-
 			}
 
 			if(pTemp == m_pCurrentSelWidget )
@@ -360,6 +496,8 @@ namespace irr_ui
 	{
 		return m_TouchableWights;
 	}
+
+
 
 
 

@@ -60,7 +60,8 @@ namespace irr_ui
 //////////////////////////////////////////////////////////////////////////
 		void selectEventWights();
 	private:
-		IrrWidget* checkWight();
+		IrrWidget* checkWidget(IrrWidget* pLeft, IrrWidget* pRight);
+		IrrWidget* selectCurWidget();
 	private:
 		IrrGraphic* m_pGraphic;
 		IrrVector2D m_DownPos;
@@ -70,10 +71,7 @@ namespace irr_ui
 		bool m_bIsMoved;
 
 		IrrWidgetTouchableList m_curTouchWights;
-
 	};
-
-
 }
 
 #endif	//_IRRGUI_H_

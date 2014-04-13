@@ -112,8 +112,16 @@ bool HelloWorld::init()
 		button2->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		std::string name2 = "btn 2";
 		button2->setName(name2);
-		//button2->setPosition(310,300);
+		button2->setPosition(20,0);
 		button1->addWidget(button2);
+
+		IrrButton* button3= IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+		button3->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+		std::string name3 = "btn 3";
+		button3->setName(name3);
+		button3->setPosition(0,0);
+		button1->addWidget(button3);
+
 		//shareCamera->appendToGUI(button2);
 // 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
 // 		pPngLabel->setPosition(300,300);

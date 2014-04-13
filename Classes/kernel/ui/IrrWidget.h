@@ -48,6 +48,7 @@ namespace irr_ui
 		bool isTouchable() const;
 
 		IrrVector2D convertToNodeSpace(const IrrVector2D& pt);
+		IrrVector2D convertToNodeSpaceAR(const IrrVector2D& pt);
 //////////////////////////////////////////////////////////////////////////
 		virtual void handleDown( IrrUIEvent& event );
 		virtual void handleUp( IrrUIEvent& event );

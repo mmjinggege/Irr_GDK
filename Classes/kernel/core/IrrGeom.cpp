@@ -314,7 +314,7 @@ namespace irr_core
 	bool IrrRect::containsVector2D( const IrrVector2D& pot ) const
 	{
 		//return (pot.X >=getMinX()  && pot.Y <=getMaxY() && pot.Y >=getMinX() && pot.Y <= getMaxY());
-		return (pot.X >=getMinX()  && pot.Y >= getMinY() && pot.X <= getMaxX() && pot.Y <= getMaxY());
+		return (pot.X >= getMinX()  && pot.Y >= getMinY() && pot.X <= getMaxX() && pot.Y <= getMaxY());
 	}
 
 	bool IrrRect::containsVector2D( float x,float y ) const

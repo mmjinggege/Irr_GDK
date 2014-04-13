@@ -23,7 +23,7 @@ namespace irr_ui
 
 	IrrVector2D IrrWidget::convertToNodeSpace( const IrrVector2D& pt )
 	{
-		CCPoint point = CCNode::convertToNodeSpaceAR(ccp(pt.X,pt.Y));	
+		CCPoint point = CCNode::convertToNodeSpace(ccp(pt.X,pt.Y));	
 		IrrVector2D ret = pt;
 // 		ret.X -= m_Rect.origin.X;
 // 		ret.Y -= m_Rect.origin.Y;
@@ -31,7 +31,15 @@ namespace irr_ui
 		ret.Y = point.y;
 		return ret;
 	}
-		
+
+	IrrVector2D IrrWidget::convertToNodeSpaceAR( const IrrVector2D& pt )
+	{
+		CCPoint point = CCNode::convertToNodeSpaceAR(ccp(pt.X,pt.Y));	
+		IrrVector2D ret = pt;
+		ret.X = point.x;
+		ret.Y = point.y;
+		return ret;
+	}
 
 	IrrRect IrrWidget::getChildRect()
 	{
@@ -136,5 +144,4 @@ namespace irr_ui
 	{
 		return m_bIsTouchable;
 	}
-
 }
