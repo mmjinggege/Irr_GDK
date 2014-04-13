@@ -284,11 +284,11 @@ namespace irr_ui
 			pRightParent = pRightParent->getWidgetParent();
 		}
 
-		if (pTmpLeft == NULL && pTmpRight == NULL)
+ 		if (pTmpLeft == NULL && pTmpRight == NULL)
 		{
 			if ( pLeft->getZOrder() == pRight->getZOrder())
 			{
-				if (pLeft->getOrderOfArrival() > pRight->getOrderOfArrival())
+				if(pLeftParent->getChildren()->indexOfObject(pLeft) > pRightParent->getChildren()->indexOfObject(pRight))
 				{
 					return pLeft;
 				}
@@ -303,16 +303,18 @@ namespace irr_ui
 
 		if (pTmpLeft == NULL)
 		{
-			return pRight;
+
+			return pLeft;
 		}
 		else if(pTmpRight == NULL)
 		{
-			return pLeft;
+
+			return pRight;
 		}
 		
 		if ( pTmpLeft->getZOrder() == pTmpRight->getZOrder())
 		{
-			if (pTmpLeft->getOrderOfArrival() > pTmpRight->getOrderOfArrival())
+			if(pLeftParent->getChildren()->indexOfObject(pLeft) > pRightParent->getChildren()->indexOfObject(pRight))
 			{
 				return pLeft;
 			}
@@ -374,8 +376,8 @@ namespace irr_ui
 				IrrRect rect = pTemp->getRect();
 
 				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpaceAR(ptTemp);
-				rect.origin.X -= pTemp->getWidgetParent()->getRect().size.width * 0.5f;
-				rect.origin.Y -= pTemp->getWidgetParent()->getRect().size.height * 0.5f;
+				rect.origin.X -= pTemp->getRect().size.width * 0.5f;
+				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
 				if (rect.containsVector2D(localVect2D))
 				{
 					m_curTouchWights.push_back(pTemp);
@@ -409,8 +411,8 @@ namespace irr_ui
 				IrrRect rect = pTemp->getRect();
 
 				IrrVector2D localVect2D = ((IrrWidget*)pTemp->getParent())->convertToNodeSpaceAR(ptTemp);
-				rect.origin.X -= pTemp->getWidgetParent()->getRect().size.width * 0.5f;
-				rect.origin.Y -= pTemp->getWidgetParent()->getRect().size.height * 0.5f;
+				rect.origin.X -= pTemp->getRect().size.width * 0.5f;
+				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
 				if (rect.containsVector2D(localVect2D))
 				{
 					m_curTouchWights.push_back(pTemp);

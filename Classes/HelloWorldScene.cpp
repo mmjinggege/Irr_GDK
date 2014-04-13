@@ -119,8 +119,8 @@ bool HelloWorld::init()
 		button3->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		std::string name3 = "btn 3";
 		button3->setName(name3);
-		button3->setPosition(0,0);
-		button1->addWidget(button3);
+		button3->setPosition(310,310);
+		shareCamera->appendToGUI(button3);
 
 		//shareCamera->appendToGUI(button2);
 // 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
