@@ -6,6 +6,8 @@ using namespace cocos2d;
 #include "IrrCamera.h"
 #include "IrrPngLabel.h"
 #include "IrrTextFieldTTF.h"
+#include "IrrStringUtils.h"
+#include "IrrMathUtils.h"
 using namespace irr_ui;
 
 
@@ -101,6 +103,8 @@ bool HelloWorld::init()
 		std::string name = "btn 0";
 		button->setName(name);
 
+
+
 		IrrButton* button1 = IrrButton::create("CloseNormal.png","CloseSelected.png",false);
 		button1->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
 		std::string name1 = "btn 1";
@@ -122,6 +126,18 @@ bool HelloWorld::init()
 		button3->setPosition(310,310);
 		shareCamera->appendToGUI(button3);
 
+		for (int i = 5; i < 500;i++)
+		{
+			button3= IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+			button3->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+			name3 = "btn";
+			name3 += irr_utils::IrrStringUtils::IntToString(i);
+			button3->setName(name3);
+			int  x = irr_utils::IrrMathUtils::RandomInt(960);
+			int  y = irr_utils::IrrMathUtils::RandomInt(640);
+			button3->setPosition(x,y);
+			shareCamera->appendToGUI(button3);
+		}
 		//shareCamera->appendToGUI(button2);
 // 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");
 // 		pPngLabel->setPosition(300,300);
@@ -158,7 +174,6 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 
 void HelloWorld::onClickHandler( CCObject* sender )
 {
-	LOG("onClickHandler");
 	IrrButton* pBtn = (IrrButton*)sender;
 	CCLOG("click:%s",pBtn->getName().c_str());
 }

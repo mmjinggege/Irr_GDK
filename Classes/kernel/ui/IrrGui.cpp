@@ -11,6 +11,7 @@ namespace irr_ui
 		m_pCurrentSelWidget = NULL;
 		m_Rect.size = size;
 		m_pGraphic = NULL;
+		m_bIsMoved = false;
 	}
 
 	IrrGui::IrrGui( float width,float height )
@@ -19,6 +20,7 @@ namespace irr_ui
 		m_pGraphic = IrrGraphic::getInstance();
 		m_pGraphic->setGraphicSize(width,height);
 		m_pCurrentSelWidget = NULL;
+		m_bIsMoved = false;
 	}
 
 	IrrGui::~IrrGui( void )
@@ -292,8 +294,7 @@ namespace irr_ui
 				{
 					return pLeft;
 				}
-			}
-			else if ( pLeft->getZOrder() > pRight->getZOrder())
+			}else if ( pLeft->getZOrder() > pRight->getZOrder())
 			{
 				return pLeft;
 			}
@@ -303,13 +304,35 @@ namespace irr_ui
 
 		if (pTmpLeft == NULL)
 		{
+			if (pLeft->getZOrder() == pTmpRight->getZOrder())
+			{
+				if(pLeftParent->getChildren()->indexOfObject(pLeft) > pRightParent->getChildren()->indexOfObject(pTmpRight))
+				{
+					return pLeft;
+				}
+			}
+			else if (pLeft->getZOrder() > pTmpRight->getZOrder())
+			{
+				return pLeft;
+			}
 
-			return pLeft;
+			return pRight;
 		}
 		else if(pTmpRight == NULL)
 		{
+			if (pRight->getZOrder() == pTmpLeft->getZOrder())
+			{
+				if(pRightParent->getChildren()->indexOfObject(pRight) > pLeftParent->getChildren()->indexOfObject(pTmpLeft))
+				{
+					return pRight;
+				}
+			}
+			else if (pRight->getZOrder() > pTmpLeft->getZOrder())
+			{
+				return pRight;
+			}
 
-			return pRight;
+			return pLeft;
 		}
 		
 		if ( pTmpLeft->getZOrder() == pTmpRight->getZOrder())
@@ -364,6 +387,8 @@ namespace irr_ui
 
 	void IrrGui::handleDown( IrrUIEvent& event )
 	{
+		ENTERFUNC();
+		GET_START_TIME;
 		if(this->getRect().containsVector2D(event.getPos()))
 		{
 			m_curTouchWights.clear();
@@ -394,10 +419,15 @@ namespace irr_ui
 				m_pCurrentSelWidget->handleDown(event);
 			}
 		}
+		GET_END_TIME;
+		LOG_TIME("handleDown");
+		LVFUNC();
 	}
 
 	void IrrGui::handleUp( IrrUIEvent& event )
 	{
+		ENTERFUNC();
+		GET_START_TIME;
 		if(m_pCurrentSelWidget)
 		{
 			m_curTouchWights.clear();
@@ -443,6 +473,9 @@ namespace irr_ui
 			m_bIsMoved = false;
 			m_pCurrentSelWidget = NULL;
 		}
+		GET_END_TIME;
+		LOG_TIME("handleUp");
+		LVFUNC();
 	}
 
 	void IrrGui::handleClick( IrrUIEvent& event )
