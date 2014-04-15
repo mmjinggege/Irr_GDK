@@ -31,10 +31,10 @@ namespace irr_ui
 
 		if(widget->isTouchable())
 		{
- 			shareGui->addTouchAbleWight(widget);
+ 			shareGui->addTouchAbleWidget(widget);
 		}
 
-		m_childWightList.push_back(widget);
+		m_childWidgetList.push_back(widget);
 		//////////////////////////////////////////////////////////////////////////
 		int rootDepth = this->getRootDepth();
 		widget->setRootDepth( ++rootDepth );
@@ -45,30 +45,11 @@ namespace irr_ui
 	{
 		if (widget->isTouchable())
 		{
-			shareGui->removeTouchAbleWight(widget);
+			shareGui->removeTouchAbleWidget(widget);
 		}
 
 		widget->setParent(NULL);
 		this->removeChild(widget);
-
-// 		pIrrWidgetItor itor;
-// 		for (itor = m_TouchableChilds.begin();itor!=m_TouchableChilds.end();itor++)
-// 		{
-// 			if(*itor == widget)
-// 			{
-// 				m_TouchableChilds.erase(itor);
-// 				if(isDel)
-// 				{
-// 					delete *itor;
-// 				}
-// 				else
-// 				{
-// 					(*itor)->setParent(NULL);
-// 				}
-// 				this->removeChild(widget);
-// 				break;
-// 			}
-// 		}
 	}
 
 	void IrrContainer::clearAllWidget()
@@ -80,19 +61,19 @@ namespace irr_ui
 // 		}
 // 		removeAllChildrenWithCleanup(true);
 
-		std::list<IrrWidget*>::iterator pItor = m_childWightList.begin();
-		IrrWidget* pWight = NULL;
-		while(pItor != m_childWightList.end())
+		std::list<IrrWidget*>::iterator pItor = m_childWidgetList.begin();
+		IrrWidget* pWidget = NULL;
+		while(pItor != m_childWidgetList.end())
 		{
-			pWight = *pItor;
-			if ( pWight->isTouchable() )
+			pWidget = *pItor;
+			if ( pWidget->isTouchable() )
 			{
-				shareGui->removeTouchAbleWight(pWight);
+				shareGui->removeTouchAbleWidget(pWidget);
 			}
 			pItor ++;
 		}
 
-		m_childWightList.clear();
+		m_childWidgetList.clear();
 		removeAllChildrenWithCleanup(true);
 	}
 
@@ -112,8 +93,8 @@ namespace irr_ui
 	IrrWidget* IrrContainer::getWidgetByName( const char* name )
 	{
 		IrrWidget* widget = NULL;
-		std::list<IrrWidget*>::iterator pItor = m_childWightList.begin();
-		for (pItor = m_childWightList.begin();pItor!=m_childWightList.end();pItor++)
+		std::list<IrrWidget*>::iterator pItor = m_childWidgetList.begin();
+		for (pItor = m_childWidgetList.begin();pItor!=m_childWidgetList.end();pItor++)
 		{
 			widget = *pItor;
 			if(widget->getName() == name)
@@ -131,8 +112,8 @@ namespace irr_ui
 		IrrRect rc = this->getRect();
  		if(rc.containsVector2D(x,y))
  		{
- 			std::list<IrrWidget*>::iterator itor = m_childWightList.begin();
- 			for (itor = m_childWightList.begin();itor!=m_childWightList.end();itor++)
+ 			std::list<IrrWidget*>::iterator itor = m_childWidgetList.begin();
+ 			for (itor = m_childWidgetList.begin();itor != m_childWidgetList.end();itor++)
  			{
  				if((*itor)->isVisible() && (*itor)->getRect().containsVector2D(x,y))
  				{

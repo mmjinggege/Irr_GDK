@@ -1,6 +1,7 @@
 #include "IrrWidget.h"
 #include "IrrSprite.h"
-
+#include "IrrCamera.h"
+#include "IrrGui.h"
 namespace irr_ui
 {
 	IrrWidget::IrrWidget( void )
@@ -12,6 +13,7 @@ namespace irr_ui
 
 	IrrWidget::~IrrWidget( void )
 	{
+		shareGui->removeTouchAbleWidget(this);
 		removeAllChildrenWithCleanup(true);
 	}
 	
@@ -138,6 +140,14 @@ namespace irr_ui
 	void IrrWidget::setTouchable( bool var )
 	{
 		m_bIsTouchable = var;
+ 		if (m_bIsTouchable)
+ 		{
+			shareGui->addTouchAbleWidget(this);
+ 		}
+		else
+		{
+			shareGui->removeTouchAbleWidget(this);
+		}
 	}
 
 	bool IrrWidget::isTouchable() const

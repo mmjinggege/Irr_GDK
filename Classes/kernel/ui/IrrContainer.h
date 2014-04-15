@@ -31,7 +31,7 @@ namespace irr_ui
 		virtual void handleMoveOut( IrrUIEvent& event );
 		//////////////////////////////////////////////////////////////////////////
 	protected:
-		std::list<IrrWidget*> m_childWightList;
+		std::list<IrrWidget*> m_childWidgetList;
 	};
 }
 

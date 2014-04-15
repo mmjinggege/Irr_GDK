@@ -128,15 +128,15 @@ bool HelloWorld::init()
 
 		for (int i = 5; i < 500;i++)
 		{
-			button3= IrrButton::create("CloseNormal.png","CloseSelected.png",false);
-			button3->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
-			name3 = "btn";
-			name3 += irr_utils::IrrStringUtils::IntToString(i);
-			button3->setName(name3);
-			int  x = irr_utils::IrrMathUtils::RandomInt(960);
-			int  y = irr_utils::IrrMathUtils::RandomInt(640);
-			button3->setPosition(x,y);
-			shareCamera->appendToGUI(button3);
+// 			button3= IrrButton::create("CloseNormal.png","CloseSelected.png",false);
+// 			button3->addClickEvent(this,irr_gui_clickselector(HelloWorld::onClickHandler));
+// 			name3 = "btn";
+// 			name3 += irr_utils::IrrStringUtils::IntToString(i);
+// 			button3->setName(name3);
+// 			int  x = irr_utils::IrrMathUtils::RandomInt(960);
+// 			int  y = irr_utils::IrrMathUtils::RandomInt(640);
+// 			button3->setPosition(x,y);
+// 			shareCamera->appendToGUI(button3);
 		}
 		//shareCamera->appendToGUI(button2);
 // 		IrrPngLabel* pPngLabel = IrrPngLabel::create("123123sfdgfgsf2");

@@ -213,9 +213,9 @@ namespace irr_ui
 // 			m_pCurrentSelWidget->handleClick(event);
 // 		}
 // 	}
-	void IrrGui::selectEventWights()
+	void IrrGui::selectEventWidgets()
 	{
-		m_curTouchWights.clear();
+		m_curTouchWidgets.clear();
 	}
 
 
@@ -352,33 +352,33 @@ namespace irr_ui
 
 	IrrWidget* IrrGui::selectCurWidget()
 	{
-		if (m_curTouchWights.size() == 0)
+		if (m_curTouchWidgets.size() == 0)
 		{
 			return NULL;
 		}
 
-		if (m_curTouchWights.size() == 1)
+		if (m_curTouchWidgets.size() == 1)
 		{
-			IrrWidget* pWigdet = m_curTouchWights.front();
-			m_curTouchWights.pop_front();
+			IrrWidget* pWigdet = m_curTouchWidgets.front();
+			m_curTouchWidgets.pop_front();
 			return pWigdet;
 		}
 
-		m_curTouchWights.sort(sortListByRootDepth);
+		m_curTouchWidgets.sort(sortListByRootDepth);
 
 		IrrWidget* pTmp = NULL;
 
-		IrrWidget* pLeft = m_curTouchWights.front();
-		m_curTouchWights.pop_front();
-		IrrWidget* pRight = m_curTouchWights.front();;
-		m_curTouchWights.pop_front();
+		IrrWidget* pLeft = m_curTouchWidgets.front();
+		m_curTouchWidgets.pop_front();
+		IrrWidget* pRight = m_curTouchWidgets.front();;
+		m_curTouchWidgets.pop_front();
 
 		pTmp = checkWidget(pLeft,pRight);
 
-		while(!m_curTouchWights.empty())
+		while(!m_curTouchWidgets.empty())
 		{
-			IrrWidget* pLeft = m_curTouchWights.front();
-			m_curTouchWights.pop_front();
+			IrrWidget* pLeft = m_curTouchWidgets.front();
+			m_curTouchWidgets.pop_front();
 			pTmp = checkWidget(pLeft,pTmp);
 		}
 
@@ -391,10 +391,10 @@ namespace irr_ui
 		GET_START_TIME;
 		if(this->getRect().containsVector2D(event.getPos()))
 		{
-			m_curTouchWights.clear();
-			pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+			m_curTouchWidgets.clear();
+			pIrrWidgetReverseItor rItor = m_TouchableWidgets.rbegin();
 			IrrWidget* pTemp = NULL;
-			while(rItor != m_TouchableWights.rend())
+			while(rItor != m_TouchableWidgets.rend())
 			{
 				pTemp = *rItor;
 				IrrVector2D ptTemp = event.getPos();
@@ -405,7 +405,7 @@ namespace irr_ui
 				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
 				if (rect.containsVector2D(localVect2D))
 				{
-					m_curTouchWights.push_back(pTemp);
+					m_curTouchWidgets.push_back(pTemp);
 				}
 				rItor++;
 			}
@@ -430,11 +430,11 @@ namespace irr_ui
 		GET_START_TIME;
 		if(m_pCurrentSelWidget)
 		{
-			m_curTouchWights.clear();
+			m_curTouchWidgets.clear();
 
-			pIrrWidgetReverseItor rItor = m_TouchableWights.rbegin();
+			pIrrWidgetReverseItor rItor = m_TouchableWidgets.rbegin();
 			IrrWidget* pTemp = NULL;
-			while(rItor != m_TouchableWights.rend())
+			while(rItor != m_TouchableWidgets.rend())
 			{
 				pTemp = *rItor;
 				IrrVector2D ptTemp = event.getPos();
@@ -445,7 +445,7 @@ namespace irr_ui
 				rect.origin.Y -= pTemp->getRect().size.height * 0.5f;
 				if (rect.containsVector2D(localVect2D))
 				{
-					m_curTouchWights.push_back(pTemp);
+					m_curTouchWidgets.push_back(pTemp);
 				}
 				rItor++;
 			}
@@ -504,19 +504,22 @@ namespace irr_ui
 
 	}
 
-	void IrrGui::addTouchAbleWight( IrrWidget* pWight )
+	void IrrGui::addTouchAbleWidget( IrrWidget* pWidget )
 	{
-		m_TouchableWights.push_back(pWight);
+		if (! isInTouchaleList(pWidget))
+		{
+			m_TouchableWidgets.push_back(pWidget);
+		}
 	}
 
-	void IrrGui::removeTouchAbleWight( IrrWidget* pWight )
+	void IrrGui::removeTouchAbleWidget( IrrWidget* pWight )
 	{
 		pIrrWidgetItor itor;
-		for (itor = m_TouchableWights.begin();itor!=m_TouchableWights.end();itor++)
+		for (itor = m_TouchableWidgets.begin();itor != m_TouchableWidgets.end();itor++)
 		{
 			if(*itor == pWight)
 			{
-				m_TouchableWights.erase(itor);
+				m_TouchableWidgets.erase(itor);
 				break;
 			}
 		}
@@ -524,16 +527,24 @@ namespace irr_ui
 
 	void IrrGui::clearTouchAbleChildren()
 	{
-		m_TouchableWights.clear();
+		m_TouchableWidgets.clear();
 	}
 
 	irr_ui::IrrWidgetTouchableList& IrrGui::getTouchAbleChildren()
 	{
-		return m_TouchableWights;
+		return m_TouchableWidgets;
 	}
 
-
-
-
-
+	bool IrrGui::isInTouchaleList( IrrWidget* pWidget )
+	{
+		pIrrWidgetItor itor;
+		for (itor = m_TouchableWidgets.begin();itor != m_TouchableWidgets.end();itor++)
+		{
+			if(*itor == pWidget)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

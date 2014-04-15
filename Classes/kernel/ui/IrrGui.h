@@ -24,7 +24,6 @@ namespace irr_ui
 		return pWightLeft->getRootDepth() > pWightRight->getRootDepth();
 	}
 
-
 	class IrrGui : public IrrContainer,public CCTouchDelegate
 	{
 	public:
@@ -53,12 +52,13 @@ namespace irr_ui
 //////////////////////////////////////////////////////////////////////////
 		virtual void DispatchUIEvent(IrrUIEvent& event); 
 //////////////////////////////////////////////////////////////////////////
-		void addTouchAbleWight(IrrWidget* pWight);
-		void removeTouchAbleWight(IrrWidget* pWight);
+		void addTouchAbleWidget(IrrWidget* pWidget);
+		void removeTouchAbleWidget(IrrWidget* pWidget);
+		bool isInTouchaleList(IrrWidget* pWidget);
 		void clearTouchAbleChildren();
 		IrrWidgetTouchableList& getTouchAbleChildren();
 //////////////////////////////////////////////////////////////////////////
-		void selectEventWights();
+		void selectEventWidgets();
 	private:
 		IrrWidget* checkWidget(IrrWidget* pLeft, IrrWidget* pRight);
 		IrrWidget* selectCurWidget();
@@ -66,11 +66,11 @@ namespace irr_ui
 		IrrGraphic* m_pGraphic;
 		IrrVector2D m_DownPos;
 
-		IrrWidgetTouchableList m_TouchableWights;
+		IrrWidgetTouchableList m_TouchableWidgets;
 		IrrWidget* m_pCurrentSelWidget;
 		bool m_bIsMoved;
 
-		IrrWidgetTouchableList m_curTouchWights;
+		IrrWidgetTouchableList m_curTouchWidgets;
 	};
 }
 
